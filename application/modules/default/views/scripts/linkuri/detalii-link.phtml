@@ -1,0 +1,32 @@
+<div class="content">
+    <div>
+        <span><?php echo $this->link->category; ?></span> > <?php echo $this->link->subcategory; ?>
+    </div></br>
+    <div><?php echo $this->link->title; ?></div>
+    <div>
+        <a href="<?php echo $this->link->url; ?>" target="_blank">
+        <?php echo $this->link->url; ?>
+        </a>
+    </div>
+    <div><?php echo $this->link->shortDescription; ?></div></br>
+    <div><?php echo $this->link->longDescription; ?></div>
+    
+    <hr>
+    <div>
+        <div style="font-weight: bold; font-size: 1.2em;">Alte linkuri din aceeasi categorie :</div>
+    
+    <?php foreach ($this->linkuri as $listare): ?>
+        <div id="linkuriplus">
+                <a href="<?php echo $this->url(array(
+                    'title' => $listare->title,
+                    'linkId' => $listare->id,        
+                    ), 'detalii_link'); ?>"><?php echo $listare->title ;?><a/></br>
+                <a class="short" href="<?php echo $this->url(array(
+                    'title' => $listare->title,
+                    'linkId' => $listare->id,        
+                ), 'detalii_link'); ?>">
+                    <?php echo $listare['shortDescription']; ?>
+        </div>
+    <?php endforeach; ?>
+    </div>
+</div>

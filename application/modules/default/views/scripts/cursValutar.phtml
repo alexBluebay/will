@@ -1,0 +1,17 @@
+<div style="margin-top: 10px">
+<div class="cv"></div>
+<div class="bg">
+    <?php 
+    foreach ($this->getCursValutar() as $cv): ?>
+    <div class="div1">
+        <div>     
+            <?php echo $cv['currencyName'] ?>
+            <span class="float_r"><?php echo $cv['value']; ?></span>
+        </div>
+    </div>
+
+    <?php endforeach; ?>
+    <div class="rb_btm"></div>
+    <div class="clear"></div>
+</div>
+</div>

@@ -1,0 +1,351 @@
+body {
+	background-color: rgb(253,253,253);
+	margin: 0px;
+	padding: 0px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: #000000;
+}
+                                    /*Wrapper*/
+#wrapper {
+	width: 1024px;
+}
+                                    /*Banner*/
+#banner {
+    background-image: url('../img/header.jpg');
+    background-repeat: no-repeat;
+    position: relative;
+    height: 106px;
+    width: 1024px;
+    padding: 0px;
+    border: none;
+}
+#banner #logo{
+    position: absolute;
+    display: block;
+    width: 240px;
+    height: 70px;
+    top: 10px;
+    left: 20px;
+}
+#banner #add_site {
+    background-image: url('../img/adauga_site.gif');
+    position: absolute;
+    height: 79px;
+    width: 360px;
+    display: block;
+    bottom: 13px;
+    right: 25px;   
+    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+}
+#add_site div {
+    margin-left: 10px;
+    margin-top: 10px;
+    color:#000000;
+}
+#add_site span {
+    font-weight: bold;
+}
+                                    /*navMenu*/
+#navMenu {
+    position: relative;
+    height: 34px;
+    width: 1024px;
+    line-height: 34px;
+    background-color: #E8E8E8;
+}
+#navMenu a{
+    text-decoration: none;
+    padding-left: 8px;
+    padding-right: 8px;
+    color:#4D4D4D;
+    line-height: 25px;
+}
+#navMenu a:hover{
+    text-decoration: underline;
+    color: #000000;
+    font-size: 101%;
+}
+#search {
+    float:right;
+}
+#linkMenu a{
+    text-decoration: none;
+    padding-left: 8px;
+    padding-right: 8px;
+    color:#4D4D4D;
+    line-height: 25px;
+}
+                                    /*linkMenu*/
+#linkMenu {
+    position: relative;
+    height: 34px;
+    width: 1024px;
+    line-height: 34px;
+    background-color: #F3F3F3;
+}
+#linkMenu ul{
+   float: right;
+   
+}
+#linkMenu a{
+    text-decoration: none;
+    padding-left: 8px;
+    padding-right: 8px;
+    color:#4D4D4D;
+    line-height: 25px;
+}
+#linkMenu a:hover{
+    color: #000000;
+    text-decoration: none;
+}
+                                /*    CONTENT    */
+#sideleft {
+    width: 210px;
+    float: left;
+}
+.content{
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.content hr{
+    margin: 25px;
+}
+#linkuriplus{
+    margin: 8px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+#contentpages{
+    background-image: url('../img/signup_bg.jpg');
+    width: 615px;
+    float: left;
+    margin-top: 10px;
+}
+.cat_bg {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 4px;
+    padding-left: 4px;
+    background-image: url('../img/cat_bg.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 142px;
+    width: 190px;
+    float: left;  
+}
+.cat_bg .catTitlu{
+    text-align: center;
+    padding-top: 10px;  
+}
+.cat_bg .catTitlu .catlink{
+    text-decoration: none;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: whitesmoke;
+}
+.cat_bg .catTitlu #catlink2{
+    text-decoration: none;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: whitesmoke;
+    display: block;
+    height: 132px;
+    width: 190px;
+}
+#sideright{
+    width:  180px;
+    float: right;
+}
+.clear {
+    clear: both;
+}
+#subcat_div1{
+    position: absolute;
+}
+#subcat_div{
+    position: relative;
+    top: 20px;
+}
+#subcat_li{
+    text-align: right;
+    margin: 0 15px 0 0;
+    
+}
+#cat_subcat{
+    line-height: 14px;
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+    color: black;
+    font-size: 11px;
+}
+#cat_subcat:hover{
+    color: red;
+}
+#toate_subcat{
+    
+    text-decoration: none;
+    font-style: italic;
+    color: black;
+    font-size: 14px;
+    text-align: center;
+    position: relative;
+    top: 35px;
+}
+#toate_subcat:hover{
+    color: red;
+    
+}
+#listare_linkuri{
+    margin: 10px auto;
+}
+#listare_linkuri li{
+    font-weight: bold;
+    font-size: 12px;
+}
+#listare_linkuri #url{
+    color: red;
+    font-style: italic;
+    font-weight: normal;
+}
+.short{
+    color: #989898;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: normal;
+}
+.short:hover{
+    text-decoration: underline;
+}
+#listare_linkuri #url:hover{
+    color: #CC0000;
+}
+                                /*    FOOTER    */
+#line1{
+    text-align: right;
+    line-height: 14px;
+    padding:0.2em 0.5em;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: black;
+}
+#line1 #bb{
+    text-decoration: none;
+    color: black;
+}
+#line1 #bb:hover {
+    text-decoration: underline;
+    color: #CC0000;
+}
+#line1 span{
+    float: left;
+    color: #ccc;
+    font-weight: normal;
+    font-size: 1em;
+}
+#line2{
+    background-image: url('../img/footer.jpg');
+    background-repeat: no-repeat;
+    height: 22px;
+    width: 1024px;
+    clear: both;
+}
+                                /*    METEO + CV    */
+.meteo{
+    background-image: url('../img/meteo_top.jpg');
+    background-repeat: no-repeat;
+    height: 52px;
+    width: 164px;
+    display: block;
+    
+     
+}
+.rb_btm{
+    background-image: url('../img/rb_btm.jpg');
+    background-repeat: no-repeat;
+    width: 164px;
+    height: 12px;
+    line-height: 12px;
+}
+.bg{
+  background-image: url('../img/meteo_bg.jpg');
+  background-repeat: repeat-y;
+  background-position: left top;
+  position: relative;
+  line-height: 20px;
+  margin: 0px;
+  width: 164px;
+  height: 100%;
+}
+.bg h3 {
+    text-align: center;
+    display: block;
+    font-size: 1.17em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+}
+
+.div1{
+    margin-bottom: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    
+}
+.float_r{
+    float: right;
+    font-size: 1.1em;
+}
+.cv{
+    background-image: url('../img/rd_top.jpg');
+    background-repeat: no-repeat;
+    height: 46px;
+    width: 164px;
+    display: block;
+    
+     
+}
+                                /*    Menu Categorii    */
+#mc_head{
+    background-image: url('../img/menu_top.jpg');
+    background-repeat: no-repeat;
+    display: block;
+    height: 40px;
+    width: 210px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+        
+}
+.mc_bg{
+    background-image: url('../img/menu_bg.jpg');
+    background-repeat: repeat-y;
+    position: relative;
+    background-position: left top;
+    width: 210px;
+    padding-top: 5px;
+    
+    
+}
+.mc_bg #bullet{
+    margin-left: 10px;
+    background-image: url('../img/bullet1.jpg');
+    background-repeat: no-repeat;
+    padding-top: 2px;
+    
+}
+.mc_bg #bullet a{
+    margin-left: 25px;
+    text-decoration: none;
+    font-size: 1.2em;
+    color: black;    
+}
+.mc_bg #bullet a:hover{
+    text-decoration: underline;
+    color: red;
+}

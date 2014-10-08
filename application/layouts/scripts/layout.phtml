@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<hmtl lang="en">
+    
+    <head>
+        
+        <title>Will</title>
+        
+        <link href="<?php echo $this->baseUrl('default/css/reset.css'); ?>" rel="stylesheet" type="text/css">
+        <link href="<?php echo $this->baseUrl('default/css/design.css'); ?>" rel="stylesheet" type="text/css">
+        <meta charset="UTF-8">
+    </head>
+
+    <body>
+        
+    <div id="wrapper" style="margin: 0 auto;">
+        
+        <div id="banner"><?php echo $this->render("header.phtml") ?></div>
+        <div id="navMenu"><?php echo $this->render("navMenu.phtml") ?></div>
+        </br>        <!--add-->
+        <div id="linkMenu"><?php echo $this->render("linkMenu.phtml") ?></div>
+        <div>
+            <div id="sideleft"><?php echo $this->render("sideleft.phtml") ?></div>
+            <div id="contentpages"><?php echo $this->layout()->content; ?></div>         
+            <div id="sideright"><?php echo $this->render("sideright.phtml") ?></div>
+            <div class="clear" ></div>
+        </div>   
+        <div><?php echo $this->render("footer.phtml") ?></div>
+
+      
+    </div>
+        
+    </body>
+    
+</html>

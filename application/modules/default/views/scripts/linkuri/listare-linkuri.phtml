@@ -1,0 +1,21 @@
+<div class="content">
+   <?php foreach ($this->linkuri as $listare): ?>
+    <div id="listare_linkuri">
+        <ul>
+            <li>
+                <?php echo $listare['title'] ;?></br>
+                <a id="url" href="<?php echo $listare->url; ?>" target="_blank">
+                    <?php echo $listare['url']; ?>
+                </a></br>
+                <a id="short" href="<?php echo $this->url(array(
+                    'title' => $listare->title,
+                    'linkId' => $listare->id,        
+                ), 'detalii_link'); ?>">
+                    <?php echo $listare['shortDescription']; ?>
+                </a></br>
+            </li>           
+        </ul>   
+    </div>
+    <?php endforeach; ?>
+</div>
+

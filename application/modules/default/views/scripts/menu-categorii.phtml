@@ -1,0 +1,16 @@
+<div id="mc_head"></div>
+<div class="mc_bg">
+    <?php foreach ($this->getCategorii() as $cats): ?>
+    <div>
+        <div id="bullet">  
+            <a class="catlink" href="<?php echo $this->url(array(
+                'category' => $cats['category'],
+                'categoryId' => $cats['id'],        
+                ), 'listare_subcategorii');  ?>">
+            <?php echo $cats['category'] ?></a>
+        </div>
+    </div>
+    <div class="rb_btm"></div>
+
+    <?php endforeach; ?>
+</div>

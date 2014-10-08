@@ -1,0 +1,21 @@
+<div class="meteo"></div>
+<div class="bg">
+    <h3></br><?php ;
+        setlocale(LC_TIME , 'rom_rom');
+        
+        echo strftime('%A %d.%m.%Y'); 
+    ?></h3> 
+
+    <?php 
+    foreach ($this->getMeteo() as $m): ?>
+    <div class="div1">
+        <div>    
+            <?php echo $m['city'] ?>
+            <span class="float_r"><?php echo $m['temp']; ?> &deg;C</span>
+        </div>
+    </div>
+
+    <?php endforeach; ?>
+    <div class="rb_btm"></div>
+    <div class="clear"></div>
+</div>

@@ -1,0 +1,47 @@
+<div class="content">
+    <div>Categorii</div></br>
+   <?php
+   //print_r($this->categorii); exit;
+   foreach ($this->categorii as $cats):
+        if (!$cats['parentId']) :?>
+    <div class="cat_bg">
+        <div class="catTitlu">
+            
+            <a class="catlink" href="<?php echo $this->url(array(
+                'category' => $cats['category'],
+                'categoryId' => $cats['id'],        
+            ), 'listare_subcategorii');  ?>">
+                <?php echo $cats['category']; ?>
+            </a>
+            <div>
+                <?php $i=1; foreach ($this->categorii as $subcats):
+                if ($subcats['parentId'] == $cats['id']) : ?>
+
+                <ul id="subcat_div">
+                    <li id="subcat_li">
+                        <a id="cat_subcat" href="<?php echo $this->url(array(
+                            'subcategory' => $subcats['category'],
+                            'subcategoryId' => $subcats['id'],        
+                        ), 'listare_linkuri'); ?>">
+                           >> <?php echo $subcats['category']; ?>
+                        </a>
+                    </li>
+                </ul>
+
+                <?php if ($i++ == 4) {
+                    echo '<a id="toate_subcat" href="/categorii/subcategorii/'.$cats['category'].'/'.$cats['id'].'">Toate Subcategoriile</a>';
+                    break;
+                    }
+                    endif;    
+                endforeach; ?>
+            </div>
+        </div>
+    </div>
+
+
+    <?php  endif;
+    endforeach; ?>
+</div> 
+
+
+
