@@ -1,0 +1,117 @@
+<div class="container">
+     <?php echo $this->render('flash-messenger.phtml'); ?>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title"><span class="btn btn-info btn-sm disabled"> Meteo </span></h3>
+        </div>
+        <div class="panel-body">
+            <form action="" method="post">
+                <div id="meteoSortable" class="columnsxo">
+                <?php foreach ($this->meteo as $m) : ?>
+                <div data-meteo-id="<?php echo $m['id']; ?>">
+                <label style="width:200px;">
+                    <input type="checkbox" <?php if($m->status == 'Y'){ echo 'checked=""'; } ?> name="meteo[<?php echo $m->id; ?>]" value="1"> <?php echo $m->city; ?>
+                </label>
+                </div>
+                <?php endforeach; ?>
+            </div>
+                <input type="hidden" name="action" value="meteo">
+                <button type="submit" class="btn btn-primary">Modifica</button>
+            </form>
+        </div>
+    </div>
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title"><span class="btn btn-info btn-sm disabled"> Curs valutar </span></h3>
+        </div>
+        <div class="panel-body">
+            
+            <form action="" method="post">
+
+                <div id='currencySortable'>
+                    <?php foreach ($this->currList as $c) : ?>                                                 
+                    <div data-currency-id="<?php echo $c['id']; ?>" class="inList">
+                            <label>
+                                <input type="checkbox" <?php if($c['active'] == 'Y'){ echo 'checked=""'; } ?> name="currs[<?php echo $c['currencyName']; ?>]" value="1"> <?php echo $c['currencyName']; ?>
+                            </label>
+                        </div>
+                    <?php endforeach; ?>                    
+                </div>
+          
+                
+                <div class='clearfix'></div>
+                <input type="hidden" name="action" value="exchange">
+                <button type="submit" class="btn btn-primary">Modifica</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+  $(function() {
+    $( "#currencySortable" ).sortable({
+        placeholder: 'inList bg-info',
+        stop: function(e, ui) {
+            
+            var sortedIDs = $( "#currencySortable" ).sortable( "toArray", {
+                attribute: 'data-currency-id',                
+            });
+            
+           
+           $.ajax({
+            url: "<?php echo $this->url(array(
+                'module' => 'admin',
+                'controller' => 'modules',
+                'action' => 'sort-currency'
+            ), 'default', true); ?>",
+            type: 'post',
+            data : {
+                sortedCurrencyIds : sortedIDs,
+            },
+          }).done(function() {
+            $( this ).addClass( "done" );
+          });
+           
+           
+        }
+                        
+    });
+        
+  });
+  
+  
+  
+  $(function() {
+    $( "#meteoSortable" ).sortable({
+        placeholder: 'inList bg-info',
+        stop: function(e, ui) {
+            
+            var sortedIDs = $( "#meteoSortable" ).sortable( "toArray", {
+                attribute: 'data-meteo-id',                
+            });
+            
+           
+           $.ajax({
+            url: "<?php echo $this->url(array(
+                'module' => 'admin',
+                'controller' => 'modules',
+                'action' => 'sort-meteo'
+            ), 'default', true); ?>",
+            type: 'post',
+            data : {
+                sortedMeteoIds : sortedIDs,
+            },
+          }).done(function() {
+            $( this ).addClass( "done" );
+          });
+           
+           
+        }
+                        
+    });
+        
+  });
+  </script>
+  

@@ -1,0 +1,40 @@
+<div class="container">
+     <?php echo $this->render('flash-messenger.phtml'); ?>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="panel-title"><span class="btn btn-info btn-sm disabled">Utilizatori &nbsp; 
+                <span class="badge">
+                    <?php echo count($this->userList); ?>
+                </span></span> &nbsp; 
+                <a href="<?php echo $this->url(array(
+                    'module' => 'admin',
+                    'controller' => 'users',
+                    'action' => 'add-user'
+                        ),
+                        'default'); ?>">
+                    <button type="button" class="btn btn-primary btn-sm">Adauga un utilizator (admin)</button></a>
+            </div>
+                
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-6 col-md-4">
+                <div class="table-responsive">
+                    <table class="table table-hover"> <?php foreach ($this->userList as $usr) : ?>
+                        <tr>
+                            <td style="width: 15px;">
+                                <a href="<?php echo $this->url(array('id' => $usr->id), 'editUser'); ?>">Editeaza</a>
+                            </td> 
+                            <td style="width: 155px;">
+                                <a href="<?php echo $this->url(array('id' => $usr->id), 'delUser'); ?>" onclick="return(confirm('esti sigura'))">Sterge</a>
+                            </td> 
+                            <td><?php echo $usr->user; ?></td> 
+                        </tr>
+                    <?php endforeach; ?>
+                    </table>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

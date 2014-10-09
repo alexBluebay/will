@@ -1,0 +1,61 @@
+<div class="container">
+     <?php echo $this->render('flash-messenger.phtml'); ?>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="panel-title"><span class="btn btn-info btn-sm disabled">Categorii &nbsp; 
+                <span class="badge">
+                    <?php echo count($this->catL); ?>
+                </span></span> &nbsp; 
+                <a href="<?php echo $this->url(array(
+                    'module' => 'admin',
+                    'controller' => 'category',
+                    'action' => 'add-category'
+                        ),
+                        'default'); ?>">
+                    <button type="button" class="btn btn-primary btn-sm">Adauga o noua categorie</button></a>
+            </div>
+                
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6">
+              
+                    <div class="tree">
+                        <ul>
+                            <li>
+                                <span><a href="#">Categorii</a></span>
+                                <ul>
+                    <?php foreach ($this->catL as $cat) : 
+                            if (!$cat['parentId']) { ?>
+                                    <li id="accordion"><span>
+                                        <a href="<?php echo $this->url(array('id' => $cat['id']), 'editCategory'); ?>"><?php echo $cat['category']; ?></a> &nbsp; 
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#c<?php echo $cat['id']; ?>"><i class="glyphicon glyphicon-resize-full"></i></a> &nbsp; 
+                                        <a href="<?php echo $this->url(array('id' => $cat['id']), 'delCategory'); ?>" onclick="return( confirm('Esti sigur ca vrei sa stergi categoria?'))"><i class="glyphicon glyphicon-remove text-danger"></i></a>
+                                        </span>
+                                        <ul class="collapse" id="c<?php echo $cat['id']; ?>">
+                    <?php foreach ($this->catL as $subcat) :
+                            if ($subcat['parentId'] == $cat['id']):	?>
+                                            <li>
+                                            <span>
+                                                    <a href="<?php echo $this->url(array('id' => $subcat['id']), 'editCategory'); ?>"><?php echo $subcat['category']; ?></a> &nbsp; 
+                                                <a href="<?php echo $this->url(array('id' => $subcat['id']), 'delCategory'); ?>" onclick="return( confirm('Esti sigur ca vrei sa stergi subcategoria?'))"><i class="glyphicon glyphicon-remove text-danger"></i></a>
+                                            </span>
+                                            </li>
+                                            
+                    <?php   endif; 
+                          endforeach; ?>
+                                        </ul>	
+                                    </li>
+
+                    <?php }  
+                    endforeach; ?>	
+                            </ul>
+                            </li>
+                        </ul>
+                    </div>          
+    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

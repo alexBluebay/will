@@ -1,0 +1,58 @@
+<div class="container">
+    <?php echo $this->render('flash-messenger.phtml'); ?>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                <span class="btn btn-info btn-sm disabled">
+                    <strong><?php echo htmlspecialchars($this->linkInfo->title); ?></strong>
+                </span>
+                </h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="well well-sm"><small class="text-muted">Tip </small><br>
+                        <?php echo htmlspecialchars($this->linkInfo->type).' link'; ?>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="well well-sm"><small class="text-muted">Categorie </small><br>
+                        <?php echo htmlspecialchars($this->catName); ?>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="well well-sm"><small class="text-muted">Data adaugat</small><br>
+                        <?php echo $this->linkInfo->createdAt; ?>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="well well-sm"><small class="text-muted">eMail </small><br>
+                        <?php echo htmlspecialchars($this->linkInfo->email); ?>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="well well-sm"><small class="text-muted">Link </small><br>
+                        <?php echo htmlspecialchars($this->linkInfo->url); ?>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="well well-sm"><small class="text-muted">Ip </small><br>
+                        <?php echo $this->linkInfo->ip; ?>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <h4>Descriere scurta</h4>
+                    <div class="well well-sm">
+                        <?php echo htmlspecialchars($this->linkInfo->shortDescription); ?>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <h4>Descriere lunga</h4>
+                    <div class="well well-sm"> ffd
+                        <?php echo htmlspecialchars($this->linkInfo->longDescription); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

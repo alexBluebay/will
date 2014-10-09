@@ -1,0 +1,44 @@
+<?php 
+    $flasMessenger = Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger');
+    $successMessages = ($flasMessenger->setNamespace('success')->hasMessages()) ? $flasMessenger->setNamespace('success')->getMessages() : array();        
+    $errorsMessages = ($flasMessenger->setNamespace('errors')->hasMessages()) ? $flasMessenger->setNamespace('errors')->getMessages() : array();
+?>
+
+
+<?php if($successMessages): ?>
+<div  class="alert alert-success alert-dismissible" id="fMessage" role="alert">
+    <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+    </button>
+  <?php foreach($successMessages as $m): ?>
+        <?php echo $m; ?>
+  <?php endforeach; ?>
+</div>
+
+<?php endif; ?>
+
+<?php if($errorsMessages): ?>
+<div  class="alert alert-danger alert-dismissible" id="fMessage" role="alert">
+    <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+    </button>
+  <?php foreach($errorsMessages as $m): ?>
+        <?php echo $m; ?>
+  <?php endforeach; ?>
+</div>
+
+<?php endif; ?>
+
+
+<script>
+    
+  $(document).ready( function() {
+      
+      setTimeout("$('#fMessage').hide()", 3000);
+      
+  });
+  //onclick='setTimeout("$(\'#fSuccess\').hide();", 5000);'  
+    
+</script>

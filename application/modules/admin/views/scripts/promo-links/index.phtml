@@ -1,0 +1,68 @@
+<div class="container">
+     <?php echo $this->render('flash-messenger.phtml'); ?>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="panel-title"><span class="btn btn-info btn-sm disabled">Linkuri sponsorizate &nbsp; 
+                <span class="badge">
+                    <?php echo count($this->promoL); ?>
+                </span></span> &nbsp; 
+                <a href="<?php echo $this->url(array(
+                    'module' => 'admin',
+                    'controller' => 'promo-links',
+                    'action' => 'add-link'
+                        ),
+                        'default'); ?>">
+                    <button type="button" class="btn btn-primary btn-sm">Adauga un link sponsorizat</button></a>
+            </div>
+                
+        </div>
+        <div class="panel-body">
+            
+            <div class="list-group" id="promoLinksSortable"> <?php foreach ($this->promoL as $promoLink) : ?>
+            
+                <span class="list-group-item" data-links-id="<?php echo $promoLink->id; ?>">
+                    <a href="<?php echo $this->url(array('id' => $promoLink->id), 'editPromoLink'); ?>">Editeaza</a>
+                    <a href="<?php echo $this->url(array('id' => $promoLink->id), 'delPromoLink'); ?>" onclick="return(confirm('esti sigur?'))">Sterge</a> &nbsp; 
+                    <span class="label label-info"><?php echo $promoLink->link_layout; ?></span>
+                    <?php echo $promoLink->title; ?>
+                    <small class="text-muted"><?php echo $promoLink->url; ?> </small>
+                    <?php // echo htmlspecialchars($promoLink->adv_code); ?>
+                </span>
+            <?php endforeach; ?>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<script>
+  $(function() {
+    $( "#promoLinksSortable" ).sortable({
+        placeholder: 'inList bg-info',
+        stop: function(e, ui) {
+            
+            var sortedIDs = $( "#promoLinksSortable" ).sortable( "toArray", {
+                attribute: 'data-links-id',                
+            });
+            
+           
+           $.ajax({
+            url: "<?php echo $this->url(array(
+                'module' => 'admin',
+                'controller' => 'promoLinks',
+                'action' => 'sort-links'
+            ), 'default', true); ?>",
+            type: 'post',
+            data : {
+                sortedLinksIds : sortedIDs,
+            },
+          }).done(function() {
+            $( this ).addClass( "done" );
+          });
+           
+           
+        }
+                        
+    });
+        
+  });
+</script>

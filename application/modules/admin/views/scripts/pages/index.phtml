@@ -1,0 +1,30 @@
+<div class="container">
+     <?php echo $this->render('flash-messenger.phtml'); ?>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="panel-title">
+                <span class="btn btn-info btn-sm disabled">Pagini &nbsp;</span>  
+            </div>
+                
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6">
+            <div class="table-responsive">
+                <table class="table table-hover"> <?php foreach ($this->pagesList as $pag) : ?>
+                    <tr>
+                        <td style="width: 140px;">
+                            <a href="<?php echo $this->url(array('id' => $pag->id), 'editPage'); ?>">Editeaza</a> &nbsp;
+                        <span class="label label-info"><?php echo htmlspecialchars($pag->pageType); ?></span>
+                        </td>  
+                        <td><?php echo $pag->metaTitle; ?></td> 
+                        
+                    </tr>
+                <?php endforeach; ?>
+                </table>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
