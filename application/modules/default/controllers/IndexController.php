@@ -10,7 +10,12 @@ class IndexController extends Zend_Controller_Action
 
     public function indexAction()
     {
-   
+        //modificare
+        $linkModel = new Default_Model_Components_Linkuri();
+        
+        $lastLinks = $linkModel->getLastLinkuri();
+        $promoLinks = $linkModel->getPromoLinkuri();
+        //print_r($lastLinks); exit;
        // model categorii
         
        // model link-uri
@@ -19,7 +24,8 @@ class IndexController extends Zend_Controller_Action
         
        // homepage: apelez functie din model linkuri care imi returneaza ultimele linkuri adaugate
         
-        
+        $this->view->lastLinks = $lastLinks;
+        $this->view->promoLinks = $promoLinks;
         
     }
 

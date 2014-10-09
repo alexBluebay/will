@@ -1,15 +1,16 @@
 <div class="content">
     <div>
-        <span><?php echo $this->link->category; ?></span> > <?php echo $this->link->subcategory; ?>
+        <span><?php echo htmlspecialchars($this->link->category); ?></span> > 
+            <?php echo htmlspecialchars($this->link->subcategory); ?>
     </div></br>
-    <div><?php echo $this->link->title; ?></div>
+    <div><?php echo htmlspecialchars($this->link->title); ?></div>
     <div>
-        <a href="<?php echo $this->link->url; ?>" target="_blank">
-        <?php echo $this->link->url; ?>
+        <a href="<?php echo htmlspecialchars($this->link->url); ?>" target="_blank">
+        <?php echo htmlspecialchars($this->link->url); ?>
         </a>
     </div>
-    <div><?php echo $this->link->shortDescription; ?></div></br>
-    <div><?php echo $this->link->longDescription; ?></div>
+    <div><?php echo htmlspecialchars($this->link->shortDescription); ?></div></br>
+    <div><?php echo htmlspecialchars($this->link->longDescription); ?></div>
     
     <hr>
     <div>
@@ -20,12 +21,12 @@
                 <a href="<?php echo $this->url(array(
                     'title' => $listare->title,
                     'linkId' => $listare->id,        
-                    ), 'detalii_link'); ?>"><?php echo $listare->title ;?><a/></br>
+                    ), 'detalii_link'); ?>"><?php echo htmlspecialchars($listare->title) ;?><a/></br>
                 <a class="short" href="<?php echo $this->url(array(
                     'title' => $listare->title,
                     'linkId' => $listare->id,        
                 ), 'detalii_link'); ?>">
-                    <?php echo $listare['shortDescription']; ?>
+                    <?php echo htmlspecialchars($listare['shortDescription']); ?>
         </div>
     <?php endforeach; ?>
     </div>

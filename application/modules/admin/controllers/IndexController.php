@@ -10,8 +10,7 @@ class Admin_IndexController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        //caca maca scris de copita lui eduard test3
-        //session_destroy();
+        
         $authModel = new Admin_Model_Components_AuthModel();
         $authModel->logged();
         $form = new Admin_Form_loginForm();

@@ -2,6 +2,54 @@
 
 class Default_Model_Components_Linkuri {
     
+    public function getLastLinkuri()   
+    {
+        $dbTableLinkuri = new Default_Model_DbTable_Linkuri();
+                
+        $select = $dbTableLinkuri->select()
+                ->from(array( '1' => 'links' ), array('id', 'categoryId', 'url', 'title', 'email', 'shortDescription', 'status', 'type'))
+                ->where("status = ?", 'Y')
+                ->order(array( 'type DESC', 'id DESC' ))
+                ->limit('4');
+                
+        $results = $dbTableLinkuri->fetchAll($select);
+                              
+        return $results;
+                
+    }
+    
+    public function getPromoLinkuri()   
+    {
+        $dbTableLinkuri = new Default_Model_DbTable_PromoLinks();
+                
+        $select = $dbTableLinkuri->select()
+                ->from(array( 'p' => 'admin_promo_links' ), array('*'))
+                ->where("link_layout = ?", 'sponsorizate')
+                ->order(array( 'link_order' ))
+                ->limit('4');
+                
+        $results = $dbTableLinkuri->fetchAll($select);
+                              
+        return $results;
+                
+    }
+    
+    public function getFooterLinks()   
+    {
+        $dbTableLinkuri = new Default_Model_DbTable_PromoLinks();
+                
+        $select = $dbTableLinkuri->select()
+                ->from(array( 'p' => 'admin_promo_links' ), array('*'))
+                ->where("link_layout = ?", 'footer')
+                ->order(array( 'link_order' ));
+                
+        $results = $dbTableLinkuri->fetchAll($select);
+                              
+        return $results;
+                
+    }
+    
+    
     public function getLinkuri($subcategorieId)   
     {
         $dbTableLinkuri = new Default_Model_DbTable_Linkuri();

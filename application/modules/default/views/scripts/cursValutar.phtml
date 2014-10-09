@@ -4,7 +4,8 @@
     <?php 
     foreach ($this->getCursValutar() as $cv): ?>
     <div class="div1">
-        <div>     
+        <div>
+            <img src="/default/img/flags/<?php echo $cv['currencyIndex']; ?>.gif" width="15px" height="10px">
             <?php echo $cv['currencyName'] ?>
             <span class="float_r"><?php echo $cv['value']; ?></span>
         </div>

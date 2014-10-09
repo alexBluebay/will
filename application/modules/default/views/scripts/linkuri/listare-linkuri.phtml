@@ -3,15 +3,15 @@
     <div id="listare_linkuri">
         <ul>
             <li>
-                <?php echo $listare['title'] ;?></br>
-                <a id="url" href="<?php echo $listare->url; ?>" target="_blank">
-                    <?php echo $listare['url']; ?>
+                <?php echo htmlspecialchars($listare['title']) ;?></br>
+                <a id="url" href="<?php echo htmlspecialchars($listare->url); ?>" target="_blank">
+                    <?php echo htmlspecialchars($listare['url']); ?>
                 </a></br>
                 <a id="short" href="<?php echo $this->url(array(
                     'title' => $listare->title,
                     'linkId' => $listare->id,        
                 ), 'detalii_link'); ?>">
-                    <?php echo $listare['shortDescription']; ?>
+                    <?php echo htmlspecialchars($listare['shortDescription']); ?>
                 </a></br>
             </li>           
         </ul>   
