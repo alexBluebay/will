@@ -123,17 +123,6 @@ class Default_Bootstrap extends Zend_Application_Module_Bootstrap
     
     }
     
-    public function _initLayout()
-    {
-        
-//        $options = array(
-//                'layout' => 'layout',
-//                'layoutPath' => APPLICATION_PATH . '/layouts/scripts'
-//        );
-//        
-//        Zend_Layout::startMvc($options);
-        
-    }
     
 }
 
