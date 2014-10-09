@@ -118,7 +118,11 @@ class Default_Model_Components_Linkuri {
         $dbTableLinkuri = new Default_Model_DbTable_Linkuri();
         
         // construiti array de insert manual
-                
+        
+        if (strpos($postData['url'], 'http://') !== false) {
+            $postData['url'] = 'http://'.$postData['url'];
+        }
+        
         $insert = array(
             'categoryId' => $postData['category'],
             'url' => $postData['url'],
@@ -131,7 +135,21 @@ class Default_Model_Components_Linkuri {
         );
                         
         $insertId = $dbTableLinkuri->insert($insert);
-       
+        
+        require APPLICATION_PATH . '/../library/GrabzPicture/lib/GrabzItClient.class.php';
+        
+        $grabzIt = new GrabzItClient("ZWQ2MTdkNTEzOWFlNDlhNTllMTk2MDdiY2Q0MGZkMmI=", 
+                                     "Pz8/Kz96Pz8/PzU/P3s/NDU/P0MdPz8AV1U/Pz8/Pz8=");
+        
+        $grabzIt->TakePicture($postData['url'], 
+                $_SERVER['HTTP_HOST'].'/index/grabz-it', 
+                $insertId, 
+                null, 
+                null, 
+                '100', 
+                '75',
+                'jpg'
+                );
         
         return $insertId;
     }
