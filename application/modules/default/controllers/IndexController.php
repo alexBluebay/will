@@ -10,7 +10,7 @@ class IndexController extends Zend_Controller_Action
 
     public function indexAction()
     {
-       
+       //mod
         $linkModel = new Default_Model_Components_Linkuri();
         
         $lastLinks = $linkModel->getLastLinkuri();
