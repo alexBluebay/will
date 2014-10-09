@@ -109,7 +109,7 @@ class Default_Bootstrap extends Zend_Application_Module_Bootstrap
         
         $router->addRoute('listare_linkuri', $route);       
         
-                                // Linkuri
+                                // Linkuri Detalii
         
         $route = new Zend_Controller_Router_Route('/link/:title/:linkId',
                 array(
@@ -119,6 +119,17 @@ class Default_Bootstrap extends Zend_Application_Module_Bootstrap
                     'linkId' => '',
                 ));
         $router->addRoute('detalii_link', $route);
+        
+                                // Linkuri Sponsor
+        
+        $route = new Zend_Controller_Router_Route ('/linksp/:title/:id',
+                array(
+                    'controller' => 'linkuri',
+                    'action' => 'sponsor-link',
+                    'title' => '',
+                    'id' => '',
+                ));
+        $router->addRoute('sponsor_link', $route);
         
     
     }
