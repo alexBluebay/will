@@ -3,8 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Proiecte/will/application/modules/default/views/scripts/index/index.phtml</file>
-            <file>file:/D:/Proiecte/will/application/layouts/scripts/layout.phtml</file>
+            <file>file:/D:/Proiecte/willz/application/modules/default/views/scripts/linkuri/sponsor-link.phtml</file>
+            <file>file:/D:/Proiecte/willz/application/modules/default/views/scripts/index/index.phtml</file>
+            <file>file:/D:/Proiecte/willz/application/modules/default/views/scripts/linkuri/detalii-link.phtml</file>
+            <file>file:/D:/Proiecte/willz/application/modules/default/models/Components/Sponsor.php</file>
+            <file>file:/D:/Proiecte/willz/application/modules/default/controllers/LinkuriController.php</file>
         </group>
     </open-files>
 </project-private>

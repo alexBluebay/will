@@ -1,0 +1,31 @@
+<div class="content">
+    <div><?php echo htmlspecialchars($this->info->title); ?></div>
+    </br></br></br>
+    <div><?php echo htmlspecialchars($this->info->title); ?></div>
+    <div>
+        <a href="<?php echo htmlspecialchars($this->info->url); ?>" target="_blank">
+        <?php echo htmlspecialchars($this->info->url); ?>
+        </a>
+    </div>
+    <div><?php echo htmlspecialchars($this->info->desc); ?></div></br>
+
+    
+    <hr>
+    <div>
+        <div style="font-weight: bold; font-size: 1.2em;">Alte linkuri din aceeasi categorie :</div>
+
+        <?php foreach ($this->sponsor as $s): ?>
+                <div class="linkuriplus">
+                        <a href="<?php echo $this->url(array(
+                            'title' => $s->title,
+                            'id' => $s->id,        
+                            ), 'sponsor_link'); ?>"><?php echo htmlspecialchars($s->title) ;?><a/></br>
+                        <a class="short" href="<?php echo $this->url(array(
+                            'title' => $s->title,
+                            'id' => $s->id,        
+                        ), 'sponsor_link'); ?>">
+                            <?php echo htmlspecialchars($s['desc']); ?>
+                </div>
+        <?php endforeach; ?>
+    </div>
+</div>
