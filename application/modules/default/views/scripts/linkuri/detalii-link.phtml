@@ -26,7 +26,7 @@
                     'title' => $listare->title,
                     'linkId' => $listare->id,        
                 ), 'detalii_link'); ?>">
-                    <?php echo htmlspecialchars($listare['shortDescription']); ?>
+                    <?php echo substr(htmlspecialchars($listare['shortDescription']), 0, 120).'..'; ?>
         </div>
     <?php endforeach; ?>
     </div>
