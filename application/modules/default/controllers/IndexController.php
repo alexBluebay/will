@@ -64,6 +64,17 @@ class IndexController extends Zend_Controller_Action
         
         $this->view->subcategorii = $subcats;
     } 
+    
+    public function testAction(){
+        $this->_helper->layout->disableLayout();
+        $this->_helper->viewRenderer->setNoRender(true);
+        
+        
+        $a = array( 'key' => 'ceva', 'key' => 'branza', 'key' => 'cashcaval');
+        $b = array( 'foame', 'branza', 'mancare');
+        
+        var_dump(in_array($b, $a));
+    }
 
 
     

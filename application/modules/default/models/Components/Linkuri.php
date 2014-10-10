@@ -136,23 +136,74 @@ class Default_Model_Components_Linkuri {
                         
         $insertId = $dbTableLinkuri->insert($insert);
         
-        require APPLICATION_PATH . '/../library/GrabzPicture/lib/GrabzItClient.class.php';
         
-        $grabzIt = new GrabzItClient("ZWQ2MTdkNTEzOWFlNDlhNTllMTk2MDdiY2Q0MGZkMmI=", 
-                                     "Pz8/Kz96Pz8/PzU/P3s/NDU/P0MdPz8AV1U/Pz8/Pz8=");
         
-        $grabzIt->TakePicture($postData['url'], 
-                $_SERVER['HTTP_HOST'].'/index/grabz-it', 
-                $insertId, 
-                null, 
-                null, 
-                '100', 
-                '75',
-                'jpg'
+        
+        $keyArr = explode(',', $postData['keywords']);
+        
+        if ($keyArr){
+            
+            $keywordTable = new Default_Model_DbTable_Keywords();
+            $linkKeywordsTable = new Default_Model_DbTable_LinksKeyword();
+            //print_r($keyArr); exit;
+            
+            foreach ($keyArr as $k) {
+                $k = trim($k);
+                $keyId = $this->checkIfKeyExist($k);
+                $insertKey = array(
+                    'keywordId' => $keyId,
+                    'urlId' => $insertId
                 );
+                
+                $linkKeywordsTable->insert($insertKey);
+            }
+            
+        }
+        
+        
+        
+//        require APPLICATION_PATH . '/../library/GrabzPicture/lib/GrabzItClient.class.php';
+//        
+//        $grabzIt = new GrabzItClient("ZWQ2MTdkNTEzOWFlNDlhNTllMTk2MDdiY2Q0MGZkMmI=", 
+//                                     "Pz8/Kz96Pz8/PzU/P3s/NDU/P0MdPz8AV1U/Pz8/Pz8=");
+//        
+//        $grabzIt->TakePicture($postData['url'], 
+//                $_SERVER['HTTP_HOST'].'/index/grabz-it', 
+//                $insertId, 
+//                null, 
+//                null, 
+//                '100', 
+//                '75',
+//                'jpg'
+//                );
         
         return $insertId;
     }
+    
+    private function checkIfKeyExist($k){
+        $keywordTable = new Default_Model_DbTable_Keywords();
+            
+            $select = $keywordTable->select()
+                    ->from(array('z' => 'keywords'), array('*'))
+                    ->where('keyword = ?', $k);
+            $resKeyId = $keywordTable->fetchRow($select);
+            
+            if (count($resKeyId)) {
+                //iau id
+                $keyId = $resKeyId->id;
+            } else {
+                // insert
+                
+                $insertKey = array(
+                    'keyword' => $k
+                );
+                
+                $keyId = $keywordTable->insert($insertKey);
+            }
+            
+            return $keyId;
+    }
+    
     public function getLinkuriUtile(){
         
         $dbTableLinkuri = new Default_Model_DbTable_PromoLinks();
