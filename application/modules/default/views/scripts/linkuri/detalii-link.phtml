@@ -21,12 +21,15 @@
                 <a href="<?php echo $this->url(array(
                     'title' => $listare->title,
                     'linkId' => $listare->id,        
-                    ), 'detalii_link'); ?>"><?php echo htmlspecialchars($listare->title) ;?><a/></br>
+                    ), 'detalii_link'); ?>"><?php echo htmlspecialchars($listare->title) ;?>
+                </a>
+            <br>
                 <a class="short" href="<?php echo $this->url(array(
                     'title' => $listare->title,
                     'linkId' => $listare->id,        
                 ), 'detalii_link'); ?>">
                     <?php echo substr(htmlspecialchars($listare['shortDescription']), 0, 120).'..'; ?>
+                </a>
         </div>
     <?php endforeach; ?>
     </div>

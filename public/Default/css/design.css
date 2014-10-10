@@ -107,7 +107,25 @@ body {
     width: 210px;
     float: left;
 }
+.head1 {
+    color: #919191;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
 .content{
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#contentadd{
+    background-image: url('../img/signup_bg.jpg');
+    background-repeat: no-repeat;
     padding-top: 10px;
     padding-left: 10px;
     padding-right: 10px;
@@ -121,10 +139,9 @@ body {
     padding-bottom: 2px;
 }
 #contentpages{
-    background-image: url('../img/signup_bg.jpg');
     width: 615px;
     float: left;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 .cat_bg {
     padding-top: 10px;
@@ -292,12 +309,14 @@ body {
     font-weight: bold;
 }
 
-.div1{
+.menu-container .div1 {
     margin-bottom: 5px;
     margin-left: 10px;
-    margin-right: 10px;
-    
+    margin-right: 10px;  
+    color: #000;
+    font-size: 1em;
 }
+
 .float_r{
     float: right;
     font-size: 1.1em;
@@ -329,15 +348,12 @@ body {
     background-position: left top;
     width: 210px;
     padding-top: 5px;
-    
-    
 }
 .mc_bg #bullet{
     margin-left: 10px;
     background-image: url('../img/bullet1.jpg');
     background-repeat: no-repeat;
     padding-top: 2px;
-    
 }
 .mc_bg #bullet a{
     margin-left: 25px;
@@ -358,8 +374,7 @@ body {
     height: 40px;
     width: 210px;
     margin-top: 10px;
-    margin-bottom: 0px;
-        
+    margin-bottom: 0px;  
 }
 .mc_bg #url{
     color: red;
@@ -368,11 +383,14 @@ body {
     font-weight: normal;
     font-style: italic;
 }
-.mc_bg #title{
+.mc_bg #div1 {
+    margin-left: 15px;
+}
+.mc_bg div a{
     font-size: 16px;
     text-decoration: none;
     color: black;
 }
-.mc_bg #title:hover{
+.mc_bg div a:hover{
     color: gray;
 }

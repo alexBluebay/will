@@ -1,8 +1,10 @@
 <div class="content">
+    <div class="head1">Subcategorii in <?php echo $this->currCategory ?></div>
    <?php foreach ($this->subcategorii as $subcats): ?>
     <div class="cat_bg">
         <div class="catTitlu">
             <a id="catlink2" href="<?php echo $this->url(array(
+                'category' => $this->currCategory,
                 'subcategory' => $subcats->category,
                 'subcategoryId' => $subcats->id,        
             ), 'listare_linkuri'); ?>">

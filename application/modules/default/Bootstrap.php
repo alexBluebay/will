@@ -99,12 +99,13 @@ class Default_Bootstrap extends Zend_Application_Module_Bootstrap
         
                                 // Listare Linkuri
 
-        $route = new Zend_Controller_Router_Route('/listare-linkuri/:subcategory/:subcategoryId',
+        $route = new Zend_Controller_Router_Route('/listare-linkuri/:category/:subcategory/:subcategoryId',
             array(
                 'controller' => 'linkuri',
                 'action' => 'listare-linkuri',
                 'subcategory' => '',
                 'subcategoryId' => '',
+                'category' => ''
             ));
         
         $router->addRoute('listare_linkuri', $route);       
