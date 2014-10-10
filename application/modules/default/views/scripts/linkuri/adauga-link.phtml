@@ -27,7 +27,9 @@
         <textarea name="as" rows="4" style="width: 60%"><a href="http://www.will.ro" title="Director web Will.ro" target="_blank">will.ro - director online</a></textarea>
         <textarea name="ass" rows="4" style="width: 60%"><a href="http://www.will.ro" title="Director web Will.ro" target="_blank"><img src="http://www.will.ro/logo.jpg" alt="Director web Will.ro" border="0"></a></textarea>
     </div>
-    
+    <p style="color:red; padding: 5px 0px 10px" id="switch">
+        Site-urile vor fi validate in 72 ore si vor aparea pe site in ordinea introducerii.
+    </p>
     <?php
         echo $this->form; 
     ?>
@@ -38,11 +40,14 @@
 <script type="text/javascript">
     function toggle(toggle, value) {
 	var ele = document.getElementById(toggle);
+        var basics = document.getElementById('switch')
 	
         if (value == "0") {
             ele.style.display = "none";
+            basics.style.display = "block";
         } else {
             ele.style.display = "block";
+            basics.style.display = "none";
         }
             
             document.getElementById('linkType').value = value;
