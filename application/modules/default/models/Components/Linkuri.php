@@ -119,8 +119,9 @@ class Default_Model_Components_Linkuri {
         
         // construiti array de insert manual
         
-        if (strpos($postData['url'], 'http://') !== false) {
+        if (strpos($postData['url'], 'http://') === false) {
             $postData['url'] = 'http://'.$postData['url'];
+            
         }
         
         $insert = array(
@@ -131,6 +132,7 @@ class Default_Model_Components_Linkuri {
             'shortDescription' => $postData['short'],
             'longDescription' => $postData['long'],
             'createdAt' => new Zend_Db_Expr('NOW()'),
+            'type' => ($postData['linkType'] == '1') ? 'exchange' : 'basic',
             'ip' => $_SERVER['REMOTE_ADDR'],
         );
                         
