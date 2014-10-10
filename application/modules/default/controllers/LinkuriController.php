@@ -60,8 +60,8 @@ class LinkuriController extends Zend_Controller_Action
         
         
         $sponsorModel = new Default_Model_Components_Sponsor();
-        $sponsor = $sponsorModel->getSponsorLink();
         $id = $this->_request->getParam('id');
+        $sponsor = $sponsorModel->getSponsorLink($id);
         $sponsorInfo = $sponsorModel->getSponsorInfo($id);
         
         $this->view->sponsor = $sponsor;

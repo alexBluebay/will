@@ -349,3 +349,14 @@ body {
     text-decoration: underline;
     color: red;
 }
+
+#lu_head{
+    background-image: url('../img/ld_top.jpg');
+    background-repeat: no-repeat;
+    display: block;
+    height: 40px;
+    width: 210px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+        
+}

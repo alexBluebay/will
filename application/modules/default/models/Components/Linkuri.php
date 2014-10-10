@@ -153,6 +153,20 @@ class Default_Model_Components_Linkuri {
         
         return $insertId;
     }
+    public function getLinkuriUtile(){
+        
+        $dbTableLinkuri = new Default_Model_DbTable_PromoLinks();
+                
+        $select = $dbTableLinkuri->select()
+                ->from(array( 'p' => 'admin_promo_links' ), array('*'))
+                ->where("link_layout = ?", 'linkuriUtile')
+                ->limit('4');
+                
+        $results = $dbTableLinkuri->fetchAll($select);
+                              
+        return $results;
+                
+    }
     
    
 }
