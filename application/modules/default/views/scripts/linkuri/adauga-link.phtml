@@ -1,5 +1,50 @@
 <div class="content">
+    <h1 style="color: grey;">Adauga Link in director</h1>
+    <div style=" text-align: center">
+        <label for="basic" style="padding: 5px; display: inline-block; vertical-align: top;">
+            <div>
+                <img src="/default/img/basic.jpg" alt="Link basic" title="Link basic" onclick="toggle('toggle', 0)">
+            </div>
+            
+            <input type="radio" id="basic" name="linkType">
+         
+        </label>
+        <label for="exchange" style="padding: 5px; display: inline-block; vertical-align: top;">
+            <div>
+                <img src="/default/img/link_exchange.jpg" alt="Link exchange" title="Schimb de link" onclick="toggle('toggle', 1)">
+            </div>
+            
+            <input type="radio" id="exchange" name="linkType">
+          
+        </label>
+    </div>
+     
+     
+    
+    <div id="toggle" style="display:none;">
+        <p style="padding: 5px 0px 5px">Pentru a putea inregistra site-ul in reteaua de link-exchange, te rugam sa adaugi unul din linkurile urmatoare in pagina principala a siteului:</p>
+        <p style="color:red; padding: 5px 0px 10px">Dupa verificare(maxim 24 ore), site-ul dumneavoastra va aparea pe primele pozitii in categoria din care face parte!</p>
+        <textarea name="as" rows="4" style="width: 60%"><a href="http://www.will.ro" title="Director web Will.ro" target="_blank">will.ro - director online</a></textarea>
+        <textarea name="ass" rows="4" style="width: 60%"><a href="http://www.will.ro" title="Director web Will.ro" target="_blank"><img src="http://www.will.ro/logo.jpg" alt="Director web Will.ro" border="0"></a></textarea>
+    </div>
+    
     <?php
         echo $this->form; 
     ?>
+    
+   
 </div>
+
+<script type="text/javascript">
+    function toggle(toggle, value) {
+	var ele = document.getElementById(toggle);
+	
+        if (value == "0") {
+            ele.style.display = "none";
+        } else {
+            ele.style.display = "block";
+        }
+            
+            document.getElementById('linkType').value = value;
+    }
+</script>

@@ -111,6 +111,12 @@ class Default_Form_AddLink extends Zend_Form {
         $element->addErrorMessage('Valoare invalida');
         $this->addElement($element);
         
+        $element = new Zend_Form_Element_Hidden('linkType', array(
+            'value' => '0',
+            'id' => 'linkType'
+        ));
+        $this->addElement($element);
+        
                                 // Buton Submit
 
         $element = new Zend_Form_Element_Button('sendData', array(
