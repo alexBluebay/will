@@ -349,6 +349,7 @@ body {
     text-decoration: underline;
     color: red;
 }
+                                /*    Linkuri Utile    */
 
 #lu_head{
     background-image: url('../img/ld_top.jpg');
@@ -359,4 +360,19 @@ body {
     margin-top: 10px;
     margin-bottom: 0px;
         
+}
+.mc_bg #url{
+    color: red;
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: normal;
+    font-style: italic;
+}
+.mc_bg #title{
+    font-size: 16px;
+    text-decoration: none;
+    color: black;
+}
+.mc_bg #title:hover{
+    color: gray;
 }

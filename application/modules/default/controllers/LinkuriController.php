@@ -69,6 +69,14 @@ class LinkuriController extends Zend_Controller_Action
         
     }
     
+    public function linkuriUtileAction()
+    {
+        $utileModel = new Default_Model_Components_Linkuri();
+        $utile = $utileModel->getLinkuriUtile();
+        
+        $this->view->utile = $utile;
+    }
+    
   
 
 
