@@ -118,6 +118,13 @@ body {
     margin-bottom: 20px;
     margin-left: 0px;
 }
+.head1 a{
+    text-decoration: none;
+    color: #919191;
+}
+.head1 a:hover{
+    color: black;
+}
 .content{
     padding-top: 10px;
     padding-left: 10px;
@@ -137,6 +144,18 @@ body {
     margin: 8px;
     padding-top: 2px;
     padding-bottom: 2px;
+}
+.linkuriplus #titlualtelinkuri{
+    font-size: 1.2em;
+}
+.linkuriplus a{
+    
+    text-decoration: none;
+    color: red;
+}
+.linkuriplus a:hover{
+    text-decoration: underline;
+    color: #CC0000;
 }
 #contentpages{
     width: 615px;
@@ -241,6 +260,9 @@ body {
 }
 #listare_linkuri #url:hover{
     color: #CC0000;
+}
+.titluLink{
+    font-size: 1.2em;
 }
                                 /*    FOOTER    */
 #line1{

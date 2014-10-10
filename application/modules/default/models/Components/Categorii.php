@@ -75,6 +75,7 @@ class Default_Model_Components_Categorii {
         
         return $listThem;
     }
+
     public function getSubcategorii2()   
     {
         $dbTableLinks = new Default_Model_DbTable_Categorii();
@@ -109,4 +110,33 @@ class Default_Model_Components_Categorii {
         return $catResults;
         
     }
+    
+    
+    
+    /**
+     * Preia categoria/subcategoria pe baza id-ului
+     * @param int $id
+     * @return categorie/subcategorie
+     */
+    public function getCategory($id) {
+               
+        $dbTableLinks = new Default_Model_DbTable_Categorii();
+        
+        $select = $dbTableLinks->select()
+                ->from(array('cats' => 'categories'), array('*')) 
+                ->setIntegrityCheck(false)
+                ->joinLeft(array('cats2' => 'categories'), 'cats.parentId = cats2.id', array('category as categoryName'))
+                
+                
+                ->where('cats.id = ?', $id);
+        
+        $result = $dbTableLinks->fetchRow($select);
+        
+        return (count($result)) ? $result : null;
+                    
+    }
+    
+    
+    
+    
 }   

@@ -1,8 +1,5 @@
 <div class="content">
-    <div>
-        <span><?php echo htmlspecialchars($this->link->category); ?></span> > 
-            <?php echo htmlspecialchars($this->link->subcategory); ?>
-    </div></br>
+    <div class="head1"><?php echo htmlspecialchars($this->link->title); ?></div>
     <div><?php echo htmlspecialchars($this->link->title); ?></div>
     <div>
         <a href="<?php echo htmlspecialchars($this->link->url); ?>" target="_blank">
@@ -17,18 +14,18 @@
         <div style="font-weight: bold; font-size: 1.2em;">Alte linkuri din aceeasi categorie :</div>
     
     <?php foreach ($this->linkuri as $listare): ?>
-        <div id="linkuriplus">
-                <a href="<?php echo $this->url(array(
+        <div class="linkuriplus">
+            <a id="titlualtelinkuri"href="<?php echo $this->url(array(
                     'title' => $listare->title,
                     'linkId' => $listare->id,        
                     ), 'detalii_link'); ?>"><?php echo htmlspecialchars($listare->title) ;?>
                 </a>
             <br>
-                <a class="short" href="<?php echo $this->url(array(
+                <?php echo substr(htmlspecialchars($listare['shortDescription']), 0, 120); ?>
+                <a href="<?php echo $this->url(array(
                     'title' => $listare->title,
                     'linkId' => $listare->id,        
-                ), 'detalii_link'); ?>">
-                    <?php echo substr(htmlspecialchars($listare['shortDescription']), 0, 120).'..'; ?>
+                ), 'detalii_link'); ?>">...mai mult! 
                 </a>
         </div>
     <?php endforeach; ?>

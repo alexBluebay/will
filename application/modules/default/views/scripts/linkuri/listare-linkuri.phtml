@@ -1,14 +1,20 @@
-<div class="head1"><?php echo $this->cat ?> > <?php echo $this->subcat ?></div>
+<div class="head1"><a href="<?php echo $this->url(array(
+                'category' => $this->category->categoryName,
+                'categoryId' => $this->category->parentId,        
+                ), 'listare_subcategorii');  ?>"><?php echo $this->category->categoryName; ?></a> > 
+                    <?php echo $this->category->category ?>
+</div>
 <div class="content">
+    
    <?php foreach ($this->linkuri as $listare): ?>
     <div id="listare_linkuri">
         <ul>
             <li>
-                <?php echo htmlspecialchars($listare['title']) ;?></br>
+                <span class="titluLink"><?php echo htmlspecialchars($listare['title']) ;?></span></br>
                 <a id="url" href="<?php echo htmlspecialchars($listare->url); ?>" target="_blank">
                     <?php echo htmlspecialchars($listare['url']); ?>
                 </a></br>
-                <a id="short" href="<?php echo $this->url(array(
+                <a class="short" href="<?php echo $this->url(array(
                     'title' => $listare->title,
                     'linkId' => $listare->id,        
                 ), 'detalii_link'); ?>">
