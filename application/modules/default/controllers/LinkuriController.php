@@ -13,12 +13,16 @@ class LinkuriController extends Zend_Controller_Action
         // ai nevoie de parametru subcategorie
         
         $categoryId = $this->_request->getParam('subcategoryId');
+        $cat = $this->_request->getParam('category');
+        $subcat = $this->_request->getParam('subcategory');
         // apelezi functie getLinkuri cu parametru
      
         $listModel = new Default_Model_Components_Linkuri();
         $listare = $listModel->getLinkuri($categoryId);
         
         $this->view->linkuri = $listare;
+        $this->view->subcat = $subcat;
+        $this->view->cat = $cat;
     }
     public function detaliiLinkAction()
     {

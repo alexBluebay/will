@@ -19,12 +19,16 @@
                         <a href="<?php echo $this->url(array(
                             'title' => $s->title,
                             'id' => $s->id,        
-                            ), 'sponsor_link'); ?>"><?php echo htmlspecialchars($s->title) ;?><a/></br>
+                            ), 'sponsor_link'); ?>">
+                                <?php echo htmlspecialchars($s->title) ;?>
+                        </a>
+                    <br>
                         <a class="short" href="<?php echo $this->url(array(
                             'title' => $s->title,
                             'id' => $s->id,        
                         ), 'sponsor_link'); ?>">
                             <?php echo htmlspecialchars($s['desc']); ?>
+                        </a>
                 </div>
         <?php endforeach; ?>
     </div>

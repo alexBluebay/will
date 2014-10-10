@@ -16,7 +16,6 @@ class CategoriiController extends Zend_Controller_Action
         
         $catModel = new Default_Model_Components_Categorii();
         $cats = $catModel->getCategoriiExtra();
-        
         $this->view->categorii = $cats;
     
     }
@@ -27,11 +26,14 @@ class CategoriiController extends Zend_Controller_Action
         // : apelez functie din model categorii care imi returneaza toate subcategoriile
         
         $parentId = $this->_request->getParam('categoryId');
+        $category = $this->_request->getParam('category');
+        
         
         $subcatModel = new Default_Model_Components_Categorii();
         $subcats = $subcatModel->getSubCategorii($parentId);
         
         $this->view->subcategorii = $subcats;
+        $this->view->currCategory = $category;
     } 
     
 }

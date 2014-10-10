@@ -1,21 +1,28 @@
-<div class="meteo"></div>
-<div class="bg">
-    <h3></br><?php ;
-        setlocale(LC_TIME , 'rom_rom');
-        
-        echo strftime('%A %d.%m.%Y'); 
-    ?></h3> 
 
-    <?php 
-    foreach ($this->getMeteo() as $m): ?>
-    <div class="div1">
-        <div>    
-            <?php echo $m['city'] ?>
-            <span class="float_r"><?php echo $m['temp']; ?> &deg;C</span>
+<div class="menu-container">
+    <div class="meteo"></div>
+    <div class="bg">
+        <h3></br><?php ;
+            setlocale(LC_TIME , 'rom_rom');
+
+            echo strftime('%A %d.%m.%Y'); 
+        ?></h3> 
+
+        <?php 
+        foreach ($this->getMeteo() as $m): ?>
+        <div class="div1">
+            <div>    
+                <div style="display: inline-block; vertical-align: middle; width: 76%;">
+                    <?php echo $m['city'] ?>
+                </div>
+                <div style="display: inline-block; vertical-align: middle; width: 21%; text-align: right;">
+                    <?php echo $m['temp']; ?> &deg;C
+                </div>
+            </div>
         </div>
-    </div>
 
-    <?php endforeach; ?>
-    <div class="rb_btm"></div>
-    <div class="clear"></div>
+        <?php endforeach; ?>
+        <div class="rb_btm"></div>
+        <div class="clear"></div>
+    </div>
 </div>
