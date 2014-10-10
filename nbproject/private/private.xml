@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/www/proiecte/will/application/modules/default/controllers/IndexController.php</file>
-            <file>file:/E:/www/proiecte/will/application/modules/default/models/Components/Linkuri.php</file>
+            <file>file:/D:/Proiecte/willz/public/Default/css/design.css</file>
+            <file>file:/D:/Proiecte/willz/application/modules/default/views/scripts/linkuri/detalii-link.phtml</file>
+            <file>file:/D:/Proiecte/willz/application/modules/default/views/scripts/index/index.phtml</file>
+            <file>file:/D:/Proiecte/willz/application/modules/default/views/scripts/linkuri/listare-linkuri.phtml</file>
         </group>
     </open-files>
 </project-private>

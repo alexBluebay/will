@@ -11,21 +11,22 @@
     
     <div>
         <?php foreach ($this->promoLinks as $p): ?> 
-        
-        <?php echo htmlspecialchars($p->title).'<img src="/default/img/sponsor.jpg" width="39px" height="17px">'.'</br>'; ?>
+        <div class="listare_linkuri">
+            <span class="titluLink"><?php echo htmlspecialchars($p->title).'<img src="/default/img/sponsor.jpg" width="39px" height="12px">'.'</br>'; ?></span>
 
-        <a href="<?php echo 'http://'.htmlspecialchars($p->url); ?>" target="_blank">
-            <?php echo htmlspecialchars($p->url); ?>
-        </a></br>
-        <a href="<?php echo  $this->url(array(
-                    'title' => $p->title,
-                    'id' => $p->id,        
-                ), 'sponsor_link'); ?>">
-            <?php echo htmlspecialchars($p->desc); ?>
-        </a></br>
+            <a href="<?php echo 'http://'.htmlspecialchars($p->url); ?>" target="_blank">
+                <?php echo htmlspecialchars($p->url); ?>
+            </a></br>
+            <a class="short" href="<?php echo  $this->url(array(
+                        'title' => $p->title,
+                        'id' => $p->id,        
+                    ), 'sponsor_link'); ?>">
+                <?php echo htmlspecialchars($p->desc); ?>
+            </a></br>
 
-        
+        </div>
         <?php endforeach; ?>
+        
     </div>
 </div>
 

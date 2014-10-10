@@ -237,14 +237,14 @@ body {
     color: red;
     
 }
-#listare_linkuri{
+.listare_linkuri{
     margin: 10px auto;
 }
-#listare_linkuri li{
+.listare_linkuri li{
     font-weight: bold;
     font-size: 12px;
 }
-#listare_linkuri #url{
+.listare_linkuri #url{
     color: red;
     font-style: italic;
     font-weight: normal;
@@ -262,7 +262,8 @@ body {
     color: #CC0000;
 }
 .titluLink{
-    font-size: 1.2em;
+    font-size: 1.3em;
+    font-weight: bold;
 }
                                 /*    FOOTER    */
 #line1{
