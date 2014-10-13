@@ -44,24 +44,48 @@ class Default_Model_Components_Linkuri {
                 ->order(array( 'link_order' ));
                 
         $results = $dbTableLinkuri->fetchAll($select);
-                              
+        
         return $results;
                 
     }
     
-    
-    public function getLinkuri($subcategorieId)   
+    public function getLinkuri($subcategorieId, $spec = array())   
     {
         $dbTableLinkuri = new Default_Model_DbTable_Linkuri();
                 
         $select = $dbTableLinkuri->select()
                 ->from(array( '1' => 'links' ), array('id', 'categoryId', 'url', 'title', 'email', 'shortDescription', 'longDescription', 'status', 'type'))
                 ->where("status = ?", 'Y')
+                ->where("categoryId = ?", $subcategorieId)
+                
+                ->order("createdAt DESC");
+                
+        
+        if(isset($spec['offsetStart']) && isset($spec['maxPePag'])) {
+            $select->limit($spec['maxPePag'], $spec['offsetStart']);
+        }
+           
+     
+                
+        $results = $dbTableLinkuri->fetchAll($select);  
+                        
+        return $results;
+                
+    }
+    
+    public function getCountLinks($subcategorieId)   
+    {
+         
+        $dbTableLinkuri = new Default_Model_DbTable_Linkuri();
+                
+        $select = $dbTableLinkuri->select()
+                ->from(array( 'l' => 'links' ), array('count(id) as count'))
+                ->where("status = ?", 'Y')
                 ->where("categoryId = ?", $subcategorieId);
                 
-        $results = $dbTableLinkuri->fetchAll($select);
-                              
-        return $results;
+        $results = $dbTableLinkuri->fetchRow($select);
+         
+        return $results->count;
                 
     }
     

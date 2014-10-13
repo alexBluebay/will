@@ -26,3 +26,30 @@
     <?php endforeach; ?>
 </div>
 
+
+<?php
+
+$rOffset = 3; 
+$i = $this->currPage-$rOffset;
+
+if($i<=0) {
+    $i = 1;
+    $rOffset = ($rOffset*2 - @$_GET['pag']) + 1;
+}
+elseif( $_GET['pag'] > $this->nrPagini-$rOffset && $i>$rOffset) {
+    $i = $i - $rOffset + ($this->nrPagini - $_GET['pag']);
+}
+
+
+
+for($i; $i <= $this->currPage+$rOffset && $i<= $this->nrPagini; $i++): ?>
+
+<a href="?pag=<?php echo $i; ?>"
+   style="border-radius: 3px; border: solid 1px black; display: inline-block; padding: 5px; <?php if($_GET['pag'] == $i) echo 'border: solid 1px red;'; ?>">
+    <?php echo $i; ?>
+</a>
+
+
+<?php endfor; ?>
+
+

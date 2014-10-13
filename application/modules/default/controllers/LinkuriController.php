@@ -19,10 +19,32 @@ class LinkuriController extends Zend_Controller_Action
         
         
         $category = $catModel->getCategory($subcategoryId); 
+                        
+                
+        $nrLinks = $listModel->getCountLinks($subcategoryId);
         
-        $listare = $listModel->getLinkuri($subcategoryId);
+        //
+        $maxPePag = 16;
+        $currPage = (isset($_GET['pag']) && is_numeric($_GET['pag'])) ? $_GET['pag'] : 1;
+        
+        $nrPagini = ceil($nrLinks/$maxPePag);
+       
+        $offsetStart = ($currPage-1) * $maxPePag;
+        
+        $this->view->currPage = $currPage;
+        $this->view->nrPagini = $nrPagini;
+        
+
+        
+        $listare = $listModel->getLinkuri($subcategoryId, array(
+            'offsetStart' => $offsetStart,
+            'maxPePag' => $maxPePag,
+        ));
               
+
         
+       
+        //exit;
         
         //echo urlencode('<script>alert("a")</script>'); exit;
         $this->view->linkuri = $listare;
