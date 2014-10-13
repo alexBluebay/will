@@ -3,10 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/Proiecte/willz/application/modules/default/views/scripts/meteo.phtml</file>
+            <file>file:/D:/Proiecte/willz/application/modules/default/forms/AddLink.php</file>
             <file>file:/D:/Proiecte/willz/public/Default/css/design.css</file>
-            <file>file:/D:/Proiecte/willz/application/modules/default/views/scripts/linkuri/detalii-link.phtml</file>
-            <file>file:/D:/Proiecte/willz/application/modules/default/views/scripts/index/index.phtml</file>
-            <file>file:/D:/Proiecte/willz/application/modules/default/views/scripts/linkuri/listare-linkuri.phtml</file>
+            <file>file:/D:/Proiecte/willz/application/modules/default/views/scripts/pagini/contact.phtml</file>
+            <file>file:/D:/Proiecte/willz/application/modules/default/views/scripts/header.phtml</file>
         </group>
     </open-files>
 </project-private>

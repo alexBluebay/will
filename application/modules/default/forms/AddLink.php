@@ -64,7 +64,7 @@ class Default_Form_AddLink extends Zend_Form {
                                 // adresa URL 
 
         $element = new Zend_Form_Element_Text('url', array(
-            'label' => 'URL:'
+            'label' => 'URL:   (ex: www.1store.ro)'
         ));
 //        $element->addDecorator($decorator);
         $element->setAttrib('class', $inputClass);
@@ -78,7 +78,7 @@ class Default_Form_AddLink extends Zend_Form {
                                 //  Title
 
         $element = new Zend_Form_Element_Text('title', array(
-            'label' => 'Titlu:',            
+            'label' => 'Titlu:    (max 50 caractere)',            
         ));
 //        $element->addDecorator($decorator);
         $element->setAttrib('class', $inputClass);
@@ -103,7 +103,7 @@ class Default_Form_AddLink extends Zend_Form {
                                 // Descriere scurta
 
         $element = new Zend_Form_Element_Textarea('short', array(
-            'label' => 'Descriere scurta:',
+            'label' => 'Descriere scurta:    (max 350 caractere)',
             'rows' => '6'
             
         ));       
@@ -116,7 +116,7 @@ class Default_Form_AddLink extends Zend_Form {
                                 // Descriere lunga
 
         $element = new Zend_Form_Element_Textarea('long', array(
-            'label' => 'Descriere:',
+            'label' => 'Descriere: (max 1000 caractere)',
             'rows' => '6'
         ));
 //        $element->addDecorator($decorator);
@@ -129,7 +129,7 @@ class Default_Form_AddLink extends Zend_Form {
                                 // keywords
 
         $element = new Zend_Form_Element_Textarea('keywords', array(
-            'label' => 'Cuvinte cheie:',
+            'label' => 'Cuvinte cheie: (separate prin virgula)',
             'rows' => '2'
         ));
 //        $element->addDecorator($decorator);
