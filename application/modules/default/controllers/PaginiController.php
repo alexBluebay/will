@@ -20,8 +20,34 @@ class PaginiController extends Zend_Controller_Action
     {
         $contactModel = new Default_Model_Components_Pagini();
         $contact = $contactModel->getPagini();
+        $form = new Default_Form_ContactForm();
+        
+        
+        if($this->_request->isPost()){
+            if ($form->isValid($this->_request->getParams())){
+                
+                $contactModel = new Default_Model_Components_ContactModel();
+                
+                $res = $contactModel->sendMail( $form->getValues() );
+                
+                if ($res) {
+                    $this->_helper->getHelper('FlashMessenger')
+                            ->setNamespace('success')
+                            ->addMessage('Mesajul a fost trimis cu succes!');
+                } else {
+                    $this->_helper->getHelper('FlashMessenger')
+                            ->setNamespace('errors')
+                            ->addMessage('Mesajul nu a fost trimis, va rugam incercati inca o data');
+                }
+                
+                $this->_redirect($this->view->url('contact'));
+            }
+            
+        }
+        
         
         $this->view->pagini = $contact;
+        $this->view->form = $form;
     }
     
     public function serviciiAction()
