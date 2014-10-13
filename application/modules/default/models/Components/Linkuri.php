@@ -25,7 +25,7 @@ class Default_Model_Components_Linkuri {
         $select = $dbTableLinkuri->select()
                 ->from(array( 'p' => 'admin_promo_links' ), array('*'))
                 ->where("link_layout = ?", 'sponsorizate')
-                ->order(array( 'link_order' ))
+                ->order(array( 'link_order DESC', 'id DESC' ))
                 ->limit('4');
                 
         $results = $dbTableLinkuri->fetchAll($select);

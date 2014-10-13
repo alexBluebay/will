@@ -14,7 +14,7 @@
         <div class="listare_linkuri">
             <span class="titluLink"><?php echo htmlspecialchars($p->title).'<img src="/default/img/sponsor.jpg" width="39px" height="12px">'.'</br>'; ?></span>
 
-            <a href="<?php echo 'http://'.htmlspecialchars($p->url); ?>" target="_blank">
+            <a href="<?php echo htmlspecialchars($p->url); ?>" target="_blank">
                 <?php echo htmlspecialchars($p->url); ?>
             </a></br>
             <a class="short" href="<?php echo  $this->url(array(
