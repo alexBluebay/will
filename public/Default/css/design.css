@@ -350,6 +350,9 @@ body {
     color: #000;
     font-size: 1em;
 }
+.div1 {
+    padding: 0px 10px;
+}
 
 .float_r{
     float: right;
