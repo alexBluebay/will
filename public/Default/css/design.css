@@ -428,3 +428,28 @@ body {
 .mc_bg div a:hover{
     color: gray;
 }
+.form-horizontal dl{
+    max-width: 615px;
+}
+.form-horizontal dl dt{
+    display: inline-block;
+    vertical-align: middle;
+    width: 21%;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    text-align: center;
+}
+.form-horizontal dl dd{
+    margin-top: 8px;
+    margin-bottom: 8px;
+    display: inline-block;
+    vertical-align: middle;
+    width: 78%;
+    
+}
+.form-horizontal dl dd textarea{
+    width: 95%;
+}
+.form-control{
+    width: 95%;
+}
