@@ -17,7 +17,21 @@ class Default_Form_AddLink extends Zend_Form {
         
         $catModel = new Default_Model_Components_Categorii();
         $catArray = $catModel->getCategoriiStructure();
-                                       
+        
+        // start definire validatoare
+        $emailAddress = new Zend_Validate_EmailAddress();                
+        
+        $urlUnique = new Zend_Validate_Db_NoRecordExists(
+            array(
+                    'table' => 'links',
+                    'field' => 'url'
+                )
+            );
+        $urlUnique->setMessage('Url-ul a mai fost definit in director.');
+        
+        $notEmpty = new Zend_Validate_NotEmpty();
+        $notEmpty->setMessage('Specificati link.');
+        
         // Tipul Linkului
 
 //        $element = new Zend_Form_Element_Select('type', array(
@@ -41,7 +55,7 @@ class Default_Form_AddLink extends Zend_Form {
         
         
 //        $element->addDecorator($decorator);
-        $element->addMultiOptions($catArray);   
+        $element->addMultiOptions($catArray);
         $element->setRequired(true);
         $element->setAttrib('class', $inputClass);
         $element->addErrorMessage('Selecteaza o categorie');
@@ -54,7 +68,11 @@ class Default_Form_AddLink extends Zend_Form {
         ));
 //        $element->addDecorator($decorator);
         $element->setAttrib('class', $inputClass);
-        $element->addErrorMessage('Valoare invalida');
+        
+        $element->setRequired()->addValidator($notEmpty, true);
+        $element->addValidator($urlUnique, true);
+        
+        $element->addFilters(array('StringTrim', 'StripTags'));  
         $this->addElement($element);
         
                                 //  Title
@@ -64,7 +82,9 @@ class Default_Form_AddLink extends Zend_Form {
         ));
 //        $element->addDecorator($decorator);
         $element->setAttrib('class', $inputClass);
-        $element->addErrorMessage('Valoare invalida');
+        $element->addErrorMessage('Scrie titlul ');
+        $element->setRequired(true);
+        $element->addFilters(array('StringTrim', 'StripTags'));  
         $this->addElement($element);
         
                                 //  Email
@@ -72,9 +92,12 @@ class Default_Form_AddLink extends Zend_Form {
         $element = new Zend_Form_Element_Text('email', array(
             'label' => 'eMail:'
         ));
+        $element->addValidator($emailAddress);
+        $element->addFilters(array('StringTrim'));
 //        $element->addDecorator($decorator);
         $element->setAttrib('class', $inputClass);
-        $element->addErrorMessage('Valoare invalida');
+        $element->setRequired(true);
+        $element->addErrorMessage('Trebuie sa introduci o adresa de email valida');
         $this->addElement($element);
         
                                 // Descriere scurta
@@ -83,10 +106,11 @@ class Default_Form_AddLink extends Zend_Form {
             'label' => 'Descriere scurta:',
             'rows' => '6'
             
-        ));
-//        $element->addDecorator($decorator);
+        ));       
         $element->setAttrib('class', $inputClass);
-        $element->addErrorMessage('Valoare invalida');
+        $element->setRequired(true);        
+        $element->addErrorMessage('Scrie o descriere scurta');
+        $element->addFilters(array('StringTrim', 'StripTags'));        
         $this->addElement($element);
         
                                 // Descriere lunga
@@ -97,7 +121,9 @@ class Default_Form_AddLink extends Zend_Form {
         ));
 //        $element->addDecorator($decorator);
         $element->setAttrib('class', $inputClass);
-        $element->addErrorMessage('Valoare invalida');
+        $element->setRequired(true);
+        $element->addFilters(array('StringTrim', 'StripTags'));  
+        $element->addErrorMessage('Descrie site-ul tau');
         $this->addElement($element);
                                         
                                 // keywords
@@ -108,13 +134,15 @@ class Default_Form_AddLink extends Zend_Form {
         ));
 //        $element->addDecorator($decorator);
         $element->setAttrib('class', $inputClass);
-        $element->addErrorMessage('Valoare invalida');
+        $element->addFilters(array('StringTrim', 'StripTags'));  
+        $element->addErrorMessage('Scrie cuvintele cheie');
         $this->addElement($element);
         
         $element = new Zend_Form_Element_Hidden('linkType', array(
             'value' => '0',
             'id' => 'linkType'
         ));
+        $element->addFilters(array('StringTrim', 'StripTags'));
         $this->addElement($element);
         
                                 // Buton Submit

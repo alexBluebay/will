@@ -52,10 +52,12 @@ class LinkuriController extends Zend_Controller_Action
         $form = new Default_Form_AddLink();
         
         if($this->_request->isPost()) {
-        
-            $linkModel = new Default_Model_Components_Linkuri();
-          
-            $lastLink = $linkModel->insertLink($this->_request->getPost());
+            if($form->isValid($this->_request->getParams())) {
+                $linkModel = new Default_Model_Components_Linkuri();
+                
+                $lastLink = $linkModel->insertLink($form->getValues());
+                
+            }
             
         
         }
