@@ -2,9 +2,22 @@
     <h1 class="head1">Ultimele adaugate in director web</h1>
     <div>
         <?php foreach ($this->lastLinks as $l): ?>
-        
-        <?php   echo htmlspecialchars($l->url); ?></br>
-         
+        <div class="listare_linkuri">
+        <ul>
+            <li>
+                <span class="titluLink"><?php echo htmlspecialchars($l['title']) ;?></span></br>
+                <a class="url" href="<?php echo htmlspecialchars($l->url); ?>" target="_blank">
+                    <?php echo htmlspecialchars($l['url']); ?>
+                </a></br>
+                <a class="short" href="<?php echo $this->url(array(
+                    'title' => $l->title,
+                    'linkId' => $l->id,        
+                ), 'detalii_link'); ?>">
+                    <?php echo htmlspecialchars($l['shortDescription']); ?>
+                </a></br>
+            </li>           
+        </ul>   
+        </div>         
         <?php endforeach; ?>
     </div><br><br>
     <h1 class="head1">Legaturi sponsorizate Will</h1>
@@ -14,7 +27,7 @@
         <div class="listare_linkuri">
             <span class="titluLink"><?php echo htmlspecialchars($p->title).'<img src="/default/img/sponsor.jpg" width="39px" height="12px">'.'</br>'; ?></span>
 
-            <a href="<?php echo htmlspecialchars($p->url); ?>" target="_blank">
+            <a class="url" href="<?php echo htmlspecialchars($p->url); ?>" target="_blank">
                 <?php echo htmlspecialchars($p->url); ?>
             </a></br>
             <a class="short" href="<?php echo  $this->url(array(

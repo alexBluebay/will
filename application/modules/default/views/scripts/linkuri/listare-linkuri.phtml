@@ -11,7 +11,7 @@
         <ul>
             <li>
                 <span class="titluLink"><?php echo htmlspecialchars($listare['title']) ;?></span></br>
-                <a id="url" href="<?php echo htmlspecialchars($listare->url); ?>" target="_blank">
+                <a class="url" href="<?php echo htmlspecialchars($listare->url); ?>" target="_blank">
                     <?php echo htmlspecialchars($listare['url']); ?>
                 </a></br>
                 <a class="short" href="<?php echo $this->url(array(
