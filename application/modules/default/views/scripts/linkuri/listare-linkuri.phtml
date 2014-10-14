@@ -7,10 +7,12 @@
 <div class="content">
     
    <?php $i=1; foreach ($this->linkuri as $listare) : ?>
-    <div class="listare_linkuri">
+    <div class="listare_linkuri ">
         <ul>
             <li>
-                <span class="titluLink"><?php echo htmlspecialchars($listare['title']) ;?></span></br>
+                <span class="titluLink"><?php echo htmlspecialchars($listare['title']) ;?><?php if ($listare->type == 'exchange'){
+                 echo '<img src="/default/img/sponsor.jpg" width="39px" height="12px">'; } ?>
+                </span></br>
                 <a class="url" href="<?php echo htmlspecialchars($listare->url); ?>" target="_blank">
                     <?php echo htmlspecialchars($listare['url']); ?>
                 </a></br>
