@@ -1,9 +1,8 @@
 <div class="content">
-    <div><?php echo htmlspecialchars($this->info->title); ?></div>
-    </br></br></br>
-    <div><?php echo htmlspecialchars($this->info->title); ?></div>
+    <div class="head1"><?php echo htmlspecialchars($this->info->title); ?></div>
+    <div class="titluLink"><?php echo htmlspecialchars($this->info->title); ?></div>
     <div>
-        <a href="<?php echo htmlspecialchars($this->info->url); ?>" target="_blank">
+        <a class="url" href="<?php echo htmlspecialchars($this->info->url); ?>" target="_blank">
         <?php echo htmlspecialchars($this->info->url); ?>
         </a>
     </div>
@@ -16,19 +15,19 @@
 
         <?php foreach ($this->sponsor as $s): ?>
                 <div class="linkuriplus">
-                        <a href="<?php echo $this->url(array(
+                    <a id="titlualtelinkuri" href="<?php echo $this->url(array(
                             'title' => $this->FormatUrl($s->title),
                             'id' => $s->id,        
                             ), 'sponsor_link'); ?>">
                                 <?php echo htmlspecialchars($s->title) ;?>
-                        </a>
+                        </a><img src="/default/img/sponsor.jpg" width="39px" height="12px">
                     <br>
+                         <?php echo htmlspecialchars($s['desc']); ?>
                         <a class="short" href="<?php echo $this->url(array(
                             'title' => $this->FormatUrl($s->title),
                             'id' => $s->id,        
                         ), 'sponsor_link'); ?>">
-                            <?php echo htmlspecialchars($s['desc']); ?>
-                        </a>
+                            ...mai mult!
                 </div>
         <?php endforeach; ?>
     </div>

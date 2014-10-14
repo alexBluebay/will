@@ -154,6 +154,14 @@ class Default_Form_AddLink extends Zend_Form {
 //        $element->addFilters(array('StringTrim', 'StripTags'));
 //        $this->addElement($element);
         //
+        $element = new Zend_Form_Element_Checkbox('agree', array(
+            'label' => 'Sunt de acord cu Termeni si Conditii'
+            
+        ));
+        
+        $element->setRequired(true); 
+        $element->addErrorMessage('bifeaza-ma');
+        $this->addElement($element);
                                 // Buton Submit
 
         $element = new Zend_Form_Element_Button('sendData', array(
@@ -164,7 +172,7 @@ class Default_Form_AddLink extends Zend_Form {
         $element->setAttrib('class', 'btn btn-default');
         $this->addElement($element);
         
-
+        
         
     }
     
