@@ -1,5 +1,5 @@
 <div class="head1"><a href="<?php echo $this->url(array(
-                'category' => $this->category->categoryName,
+                'category' => $this->FormatUrl($this->category->categoryName),
                 'categoryId' => $this->category->parentId,        
                 ), 'listare_subcategorii');  ?>"><?php echo $this->category->categoryName; ?></a> > 
                     <?php echo $this->category->category ?>
@@ -15,7 +15,7 @@
                     <?php echo htmlspecialchars($listare['url']); ?>
                 </a></br>
                 <a class="short" href="<?php echo $this->url(array(
-                    'title' => $listare->title,
+                    'title' => $this->FormatUrl($listare->title),
                     'linkId' => $listare->id,        
                 ), 'detalii_link'); ?>">
                     <?php echo htmlspecialchars($listare['shortDescription']); ?>

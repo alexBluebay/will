@@ -10,7 +10,7 @@
                     <?php echo htmlspecialchars($l['url']); ?>
                 </a></br>
                 <a class="short" href="<?php echo $this->url(array(
-                    'title' => $l->title,
+                    'title' => $this->FormatUrl($l->title),
                     'linkId' => $l->id,        
                 ), 'detalii_link'); ?>">
                     <?php echo htmlspecialchars($l['shortDescription']); ?>
@@ -40,7 +40,7 @@
                 <?php echo htmlspecialchars($p->url); ?>
             </a></br>
             <a class="short" href="<?php echo  $this->url(array(
-                        'title' => $p->title,
+                        'title' => $this->FormatUrl($p->title),
                         'id' => $p->id,        
                     ), 'sponsor_link'); ?>">
                 <?php echo htmlspecialchars($p->desc); ?>

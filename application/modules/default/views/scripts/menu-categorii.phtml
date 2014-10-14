@@ -4,7 +4,7 @@
     <div>
         <div id="bullet">  
             <a class="catlink" href="<?php echo $this->url(array(
-                'category' => $cats['category'],
+                'category' => $this->FormatUrl($cats['category']),
                 'categoryId' => $cats['id'],        
                 ), 'listare_subcategorii');  ?>">
             <?php echo $cats['category'] ?></a>

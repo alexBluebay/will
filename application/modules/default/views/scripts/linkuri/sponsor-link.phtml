@@ -17,14 +17,14 @@
         <?php foreach ($this->sponsor as $s): ?>
                 <div class="linkuriplus">
                         <a href="<?php echo $this->url(array(
-                            'title' => $s->title,
+                            'title' => $this->FormatUrl($s->title),
                             'id' => $s->id,        
                             ), 'sponsor_link'); ?>">
                                 <?php echo htmlspecialchars($s->title) ;?>
                         </a>
                     <br>
                         <a class="short" href="<?php echo $this->url(array(
-                            'title' => $s->title,
+                            'title' => $this->FormatUrl($s->title),
                             'id' => $s->id,        
                         ), 'sponsor_link'); ?>">
                             <?php echo htmlspecialchars($s['desc']); ?>

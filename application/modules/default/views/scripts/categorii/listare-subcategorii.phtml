@@ -4,8 +4,8 @@
     <div class="cat_bg">
         <div class="catTitlu">
             <a id="catlink2" href="<?php echo $this->url(array(
-                'category' => $this->currCategory,
-                'subcategory' => $subcats->category,
+                'category' => $this->FormatUrl($this->currCategory),
+                'subcategory' => $this->FormatUrl($subcats->category),
                 'subcategoryId' => $subcats->id,        
             ), 'listare_linkuri'); ?>">
                 <?php echo $subcats->category; ?>
