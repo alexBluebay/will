@@ -149,14 +149,23 @@ class Default_Bootstrap extends Zend_Application_Module_Bootstrap
         
                                 // Linkuri Sponsor
         
-        $route = new Zend_Controller_Router_Route ('/linksp/:title/:id',
+        $router->addRoute(
+            'sponsor_link',
+            new Zend_Controller_Router_Route_Regex('like-(\d+)-(.+)',
                 array(
-                    'controller' => 'linkuri',
-                    'action' => 'sponsor-link',
-                    'title' => '',
-                    'id' => '',
-                ));
-        $router->addRoute('sponsor_link', $route);
+                    'module'        => 'default',
+                    'controller'    => 'linkuri',
+                    'action'        => 'sponsor-link',
+                    'title'  => '',
+                    'id'  => '',
+                ),
+                array(
+                    'title' => 2,
+                    'id' => 1,
+                ),
+                'like-%d-%s'
+            )
+        );
         
     
     }

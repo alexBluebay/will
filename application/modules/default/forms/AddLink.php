@@ -145,6 +145,15 @@ class Default_Form_AddLink extends Zend_Form {
         $element->addFilters(array('StringTrim', 'StripTags'));
         $this->addElement($element);
         
+        //
+//        $rand_cap = rand(1000,9999);
+//        $element = new Zend_Form_Element_Text('captainPlanet', array(
+//            'label' => "<img src='captcha?a=$rand_cap'>",
+//            'id' => 'linkType'
+//        ));
+//        $element->addFilters(array('StringTrim', 'StripTags'));
+//        $this->addElement($element);
+        //
                                 // Buton Submit
 
         $element = new Zend_Form_Element_Button('sendData', array(
