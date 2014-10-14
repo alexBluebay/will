@@ -353,6 +353,9 @@ body {
 .div1 {
     padding: 0px 10px;
 }
+.meteo .div1{
+    padding: 0;
+}
 
 .float_r{
     float: right;
