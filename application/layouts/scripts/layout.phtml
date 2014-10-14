@@ -16,7 +16,11 @@
         
         <div id="banner"><?php echo $this->render("header.phtml") ?></div>
         <div id="navMenu"><?php echo $this->render("navMenu.phtml") ?></div>
-        </br>        <!--add-->
+        <br />        <!--add-->
+        <div style="text-align: center;">
+            <?php echo $this->GetAds('top')->adv_code ; ?>
+        </div>
+        <br />
         <div id="linkMenu"><?php echo $this->render("linkMenu.phtml") ?></div>
         <div>
             <div id="sideleft"><?php echo $this->render("sideleft.phtml") ?></div>

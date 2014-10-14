@@ -6,7 +6,7 @@
 </div>
 <div class="content">
     
-   <?php foreach ($this->linkuri as $listare): ?>
+   <?php $i=1; foreach ($this->linkuri as $listare) : ?>
     <div class="listare_linkuri">
         <ul>
             <li>
@@ -23,7 +23,16 @@
             </li>           
         </ul>   
     </div>
-    <?php endforeach; ?>
+    <?php if( ($this->maxPePag / 2) == $i) { ?>
+    <div class="listare_linkuri">
+        <ul>
+            <li>
+                <?php echo $this->GetAds('links')->adv_code; ?>
+            </li>           
+        </ul>   
+    </div>
+    <?php } ?>
+    <?php $i++; endforeach; ?>
 </div>
 
 

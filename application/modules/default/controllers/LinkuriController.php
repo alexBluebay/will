@@ -33,6 +33,7 @@ class LinkuriController extends Zend_Controller_Action
         
         $this->view->currPage = $currPage;
         $this->view->nrPagini = $nrPagini;
+        $this->view->maxPePag = $maxPePag;
         
 
         
