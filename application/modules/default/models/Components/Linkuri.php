@@ -57,7 +57,7 @@ class Default_Model_Components_Linkuri {
                 ->where("status = ?", 'Y')
                 ->where("categoryId = ?", $subcategorieId)
                 
-                ->order("createdAt DESC");
+                ->order(array('type DESC', 'createdAt DESC'));
                 
         
         if(isset($spec['offsetStart']) && isset($spec['maxPePag'])) {

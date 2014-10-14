@@ -28,8 +28,12 @@
                     </li>
                 </ul>
 
-                <?php if ($i++ == 4) {
-                    echo '<a id="toate_subcat" href="/categorii/subcategorii/'.$cats['category'].'/'.$cats['id'].'">Toate Subcategoriile</a>';
+                <?php if ($i++ == 4) { ?>
+                    <a id="toate_subcat" href="<?php echo $this->url(array(
+                'category' => $cats['category'],
+                'categoryId' => $cats['id'],        
+            ), 'listare_subcategorii');  ?>">Toate Subcategoriile</a>
+                    <?php
                     break;
                     }
                     endif;    

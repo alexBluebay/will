@@ -1,7 +1,7 @@
 <div>
     <h1 class="head1">Ultimele adaugate in director web</h1>
     <div>
-        <?php foreach ($this->lastLinks as $l): ?>
+        <?php $i = 1; foreach ($this->lastLinks as $l): ?>
         <div class="listare_linkuri">
         <ul>
             <li>
@@ -17,8 +17,17 @@
                 </a></br>
             </li>           
         </ul>   
-        </div>         
-        <?php endforeach; ?>
+        </div>
+    <?php if( 2 == $i) : ?>
+    <div class="listare_linkuri">
+        <ul>
+            <li>
+                <?php echo $this->GetAds('links')->adv_code; ?>
+            </li>           
+        </ul>   
+    </div>
+    <?php endif; ?>         
+        <?php $i++; endforeach; ?>
     </div><br><br>
     <h1 class="head1">Legaturi sponsorizate Will</h1>
     

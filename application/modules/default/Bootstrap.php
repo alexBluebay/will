@@ -87,39 +87,65 @@ class Default_Bootstrap extends Zend_Application_Module_Bootstrap
         $router->addRoute('listare_categorii', $route);
         
                                // Subcategorii
-        $route = new Zend_Controller_Router_Route('/categorii/subcategorii/:category/:categoryId',
-            array(
-                'controller' => 'categorii',
-                'action' => 'listare-subcategorii',
-                'category' => '',
-                'categoryId' => '',
-            ));
-        
-        $router->addRoute('listare_subcategorii', $route);
+        $router->addRoute(
+            'listare_subcategorii',
+            new Zend_Controller_Router_Route_Regex('subcategorii-(\d+)-(.+)',
+                array(
+                    'module'        => 'default',
+                    'controller'    => 'categorii',
+                    'action'        => 'listare-subcategorii',
+                    'category'  => '',
+                    'categoryId'  => '',
+                ),
+                array(
+                    'category' => 2,
+                    'categoryId' => 1,
+                ),
+                'subcategorii-%d-%s'
+            )
+        );
         
                                 // Listare Linkuri
 
-        $route = new Zend_Controller_Router_Route('/listare-linkuri/:category/:subcategory/:subcategoryId',
-            array(
-                'controller' => 'linkuri',
-                'action' => 'listare-linkuri',
-                'subcategory' => '',
-                'subcategoryId' => '',
-                'category' => ''
-            ));
-        
-        $router->addRoute('listare_linkuri', $route);       
+        $router->addRoute(
+            'listare_linkuri',
+            new Zend_Controller_Router_Route_Regex('categorie-(\d+)-(.+)',
+                array(
+                    'module'        => 'default',
+                    'controller'    => 'linkuri',
+                    'action'        => 'listare-linkuri',
+                    'subcategory'  => '',
+                    'category'  => '',
+                    'subcategoryId'  => '',
+                ),
+                array(
+                    'subcategory' => 2,
+                    'category' => 3,
+                    'subcategoryId' => 1,
+                ),
+                'categorie-%d-%s'
+            )
+        );      
         
                                 // Linkuri Detalii
         
-        $route = new Zend_Controller_Router_Route('/link/:title/:linkId',
+         $router->addRoute(
+            'detalii_link',
+            new Zend_Controller_Router_Route_Regex('link-(\d+)-(.+)',
                 array(
-                    'controller' => 'linkuri',
-                    'action' => 'detalii-link',
-                    'title' => '',
-                    'linkId' => '',
-                ));
-        $router->addRoute('detalii_link', $route);
+                    'module'        => 'default',
+                    'controller'    => 'linkuri',
+                    'action'        => 'detalii-link',
+                    'title'  => '',
+                    'linkId'  => '',
+                ),
+                array(
+                    'title' => 2,
+                    'linkId' => 1,
+                ),
+                'link-%d-%s'
+            )
+        );
         
                                 // Linkuri Sponsor
         
