@@ -14,6 +14,11 @@ class Default_Form_AddLink extends Zend_Form {
         ));
                 
         //$decorator = new Default_Form_Decorators_Decorator();
+        if (isset($_POST['comp'])){
+            $rand_cap = $_POST['comp'];
+        } else {
+            $rand_cap = rand(1000,9999);
+        }
         
         $catModel = new Default_Model_Components_Categorii();
         $catArray = $catModel->getCategoriiStructure();
@@ -31,6 +36,12 @@ class Default_Form_AddLink extends Zend_Form {
         
         $notEmpty = new Zend_Validate_NotEmpty();
         $notEmpty->setMessage('Specificati link.');
+        
+        
+        $isEqual = new Zend_Validate_Identical();
+        $isEqual->setToken( @$_POST['comp'] );
+        $isEqual->setMessage('Introduceti codul din imagine!');
+       
         
         // Tipul Linkului
 
@@ -146,13 +157,28 @@ class Default_Form_AddLink extends Zend_Form {
         $this->addElement($element);
         
         //
-//        $rand_cap = rand(1000,9999);
-//        $element = new Zend_Form_Element_Text('captainPlanet', array(
-//            'label' => "<img src='captcha?a=$rand_cap'>",
-//            'id' => 'linkType'
-//        ));
-//        $element->addFilters(array('StringTrim', 'StripTags'));
-//        $this->addElement($element);
+        
+        $element = new Zend_Form_Element_Hidden('comp');
+        
+        $element->setValue($rand_cap);
+        $element->addFilters(array('StringTrim', 'StripTags'));
+        $this->addElement($element);
+        
+        
+        $element = new Zend_Form_Element_Text('captainPlanet', array(
+            'label' => "Scrie codul : <img src='captcha?a=$rand_cap'>",
+            'placeholder' => 'Scrie codul din imaginea alaturata aici',
+            'id' => 'linkType'
+        ));
+        $element->addDecorator('label', array('escape' => false) );
+        $element->setRequired(true);
+        $element->addFilters(array('StringTrim', 'StripTags'));  
+        
+        $element->addValidator($isEqual);
+        
+        //$element->addErrorMessage('Scrie codul din imagine');
+        $element->setAttrib('class', $inputClass);
+        $this->addElement($element);
         //
         $element = new Zend_Form_Element_Checkbox('agree', array(
             'label' => 'Sunt de acord cu Termeni si Conditii'
