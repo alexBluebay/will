@@ -69,7 +69,7 @@ class Default_Form_ContactForm extends Zend_Form {
         
 
         $element = new Zend_Form_Element_Button('sendData', array(
-            'label' => 'ADAUGA',
+            'label' => 'Trimite mesaj',
              'type' => 'submit'
         ));
 //        $element->addDecorator($decorator);

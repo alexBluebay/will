@@ -535,6 +535,7 @@ class GrabzItClient
 	private function getResultObject($result)
 	{
 		$obj = simplexml_load_string($result);
+                        
 
 		if (!empty($obj->Message))
 		{

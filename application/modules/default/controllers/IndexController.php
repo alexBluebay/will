@@ -45,7 +45,7 @@ class IndexController extends Zend_Controller_Action
         
         $uploadPath = APPLICATION_PATH . '/../public/default/img/uploads/';
         //Ensure that the application has the correct rights for this directory.
-        file_put_contents($uploadPath . $id.'.jpg', $result);
+        file_put_contents($uploadPath . $customId.'.jpg', $result);
         
         
     }

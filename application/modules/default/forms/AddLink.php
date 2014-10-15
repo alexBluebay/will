@@ -14,10 +14,8 @@ class Default_Form_AddLink extends Zend_Form {
         ));
                 
         //$decorator = new Default_Form_Decorators_Decorator();
-        if (isset($_POST['comp'])){
-            $rand_cap = $_POST['comp'];
-        } else {
-            $rand_cap = rand(1000,9999);
+        if (!isset($_SESSION['captha']) || !isset($_POST['captainPlanet'])){
+            $_SESSION['captha'] = rand(1000,9999);
         }
         
         $catModel = new Default_Model_Components_Categorii();
@@ -39,8 +37,11 @@ class Default_Form_AddLink extends Zend_Form {
         
         
         $isEqual = new Zend_Validate_Identical();
-        $isEqual->setToken( @$_POST['comp'] );
-        $isEqual->setMessage('Introduceti codul din imagine!');
+
+      
+        $isEqual->setToken( $_SESSION['captha'] );
+        $isEqual->setStrict(false);
+        $isEqual->setMessage('Codul din imagine nu este corect!');
        
         
         // Tipul Linkului
@@ -156,17 +157,9 @@ class Default_Form_AddLink extends Zend_Form {
         $element->addFilters(array('StringTrim', 'StripTags'));
         $this->addElement($element);
         
-        //
-        
-        $element = new Zend_Form_Element_Hidden('comp');
-        
-        $element->setValue($rand_cap);
-        $element->addFilters(array('StringTrim', 'StripTags'));
-        $this->addElement($element);
-        
-        
+              
         $element = new Zend_Form_Element_Text('captainPlanet', array(
-            'label' => "Scrie codul : <img src='captcha?a=$rand_cap'>",
+            'label' => "Scrie codul : <img src='/captcha'>",
             'placeholder' => 'Scrie codul din imaginea alaturata aici',
             'id' => 'linkType'
         ));

@@ -10,10 +10,10 @@ class Admin_IndexController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        
+       
         $authModel = new Admin_Model_Components_AuthModel();
         $authModel->logged();
-        $form = new Admin_Form_loginForm();
+        $form = new Admin_Form_LoginForm();
         
         if(isset($_POST['sendData'])){
             

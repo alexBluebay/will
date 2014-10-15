@@ -1,7 +1,7 @@
 <?php
 
 
-class Admin_Form_loginForm extends Zend_Form {
+class Admin_Form_LoginForm extends Zend_Form {
     
     public function init()
     {

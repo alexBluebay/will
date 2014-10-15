@@ -40,7 +40,11 @@ class PaginiController extends Zend_Controller_Action
                             ->addMessage('Mesajul nu a fost trimis, va rugam incercati inca o data');
                 }
                 
-                $this->_redirect($this->view->url('contact'));
+                $this->_redirect($this->view->url(array(
+							'module' => 'default',
+							'controller' => 'pagini',
+							'action' => 'contact'
+					)));
             }
             
         }

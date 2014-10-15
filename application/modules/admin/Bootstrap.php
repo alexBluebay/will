@@ -3,11 +3,6 @@
 class  Admin_Bootstrap extends Zend_Application_Module_Bootstrap
 {
     
-    public function _initSession()
-    {
-        new Zend_Session_Namespace();
-              
-    }
 
     public function _initPreDispatch()
     {

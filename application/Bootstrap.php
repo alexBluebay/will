@@ -2,6 +2,11 @@
 
 class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 {
+    public function _initSession()
+    {
+        new Zend_Session_Namespace();
+        
+    }
 
     public function _initSetDbAdapter()
     {

@@ -79,7 +79,25 @@ class Admin_DashboardController extends Zend_Controller_Action
     public function allLinksAction()
     {
         $linksModel = new Admin_Model_Components_Links();
-        $linkList = $linksModel->listAllLinks();
+        
+        $nrLinks = $linksModel->countListAllLinks();
+        
+        $maxPePag = 16;
+        $currPage = (isset($_GET['pag']) && is_numeric($_GET['pag'])) ? $_GET['pag'] : 1;
+        
+        $nrPagini = ceil($nrLinks/$maxPePag);
+       
+        $offsetStart = ($currPage-1) * $maxPePag;
+        
+        $this->view->currPage = $currPage;
+        $this->view->nrPagini = $nrPagini;
+        $this->view->maxPePag = $maxPePag;
+        $this->view->totalLinks = $nrLinks;
+        
+        $linkList = $linksModel->listAllLinks(array(
+            'offsetStart' => $offsetStart,
+            'maxPePag' => $maxPePag
+        ));
         $this->view->listObj = $linkList;
     }
     

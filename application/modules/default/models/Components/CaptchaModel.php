@@ -19,8 +19,8 @@ class Default_Model_Components_CaptchaModel {
 
 		//$rand_string = rand(1000,9999);
 		//$rand_string=$this->deCrypt($_GET['a']);
-                if(isset($_GET['a'])){
-                    $rand_string = $_GET['a'];
+                if(isset($_SESSION['captha'])){
+                    $rand_string = $_SESSION['captha'];
                 } else {
                     $rand_string = 'A=?';
                 }

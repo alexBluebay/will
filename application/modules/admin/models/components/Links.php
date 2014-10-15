@@ -18,15 +18,36 @@ class Admin_Model_Components_Links
         return $listThem;
     }
     
-    public function listAllLinks()   
+    
+    public function listAllLinks($paginationArr = array())   
     {
         $dbTableLinks = new Admin_Model_DbTable_Links();
         
         $select = $dbTableLinks->select()
-                ->from(array('l' => 'links'), array('*'));
+                ->from(array('l' => 'links'), array('*'))
+                ->order('id DESC');
+        
+        if (isset($paginationArr['maxPePag']) && isset($paginationArr['offsetStart'])) {
+            $select->limit($paginationArr['maxPePag'], $paginationArr['offsetStart']);
+        }
+                
         $listThem = $dbTableLinks->fetchAll($select);
         
         return $listThem;
+    }
+    
+    
+    public function countListAllLinks()   
+    {
+        $dbTableLinks = new Admin_Model_DbTable_Links();
+        
+        $select = $dbTableLinks->select()
+                ->from(array('l' => 'links'), array('count(id) as count'));
+        
+                
+        $cnt = $dbTableLinks->fetchRow($select);
+        
+        return $cnt->count;
     }
     
     
