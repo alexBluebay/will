@@ -13,7 +13,7 @@ class Default_Form_AddLink extends Zend_Form {
             'role' => 'form'
         ));
                 
-        //$decorator = new Default_Form_Decorators_Decorator();
+        $decorator = new Default_Form_Decorators_DecoratorAddLink();
         if (!isset($_SESSION['captha']) || !isset($_POST['captainPlanet'])){
             $_SESSION['captha'] = rand(1000,9999);
         }
@@ -62,11 +62,8 @@ class Default_Form_AddLink extends Zend_Form {
         
         $element = new Zend_Form_Element_Select('category', array(
             'label' => 'Categorie:'
-        ));
-        
-        
-        
-//        $element->addDecorator($decorator);
+        ));                        
+        $element->addDecorator($decorator);
         $element->addMultiOptions($catArray);
         $element->setRequired(true);
         $element->setAttrib('class', $inputClass);
@@ -78,7 +75,7 @@ class Default_Form_AddLink extends Zend_Form {
         $element = new Zend_Form_Element_Text('url', array(
             'label' => 'URL:   (ex: www.1store.ro)'
         ));
-//        $element->addDecorator($decorator);
+        $element->addDecorator($decorator);
         $element->setAttrib('class', $inputClass);
         
         $element->setRequired()->addValidator($notEmpty, true);
@@ -92,7 +89,7 @@ class Default_Form_AddLink extends Zend_Form {
         $element = new Zend_Form_Element_Text('title', array(
             'label' => 'Titlu:    (max 50 caractere)',            
         ));
-//        $element->addDecorator($decorator);
+        $element->addDecorator($decorator);
         $element->setAttrib('class', $inputClass);
         $element->addErrorMessage('Scrie titlul ');
         $element->setRequired(true);
@@ -106,7 +103,7 @@ class Default_Form_AddLink extends Zend_Form {
         ));
         $element->addValidator($emailAddress);
         $element->addFilters(array('StringTrim'));
-//        $element->addDecorator($decorator);
+        $element->addDecorator($decorator);
         $element->setAttrib('class', $inputClass);
         $element->setRequired(true);
         $element->addErrorMessage('Trebuie sa introduci o adresa de email valida');
@@ -119,6 +116,7 @@ class Default_Form_AddLink extends Zend_Form {
             'rows' => '6'
             
         ));       
+        $element->addDecorator($decorator);
         $element->setAttrib('class', $inputClass);
         $element->setRequired(true);        
         $element->addErrorMessage('Scrie o descriere scurta');
@@ -131,7 +129,7 @@ class Default_Form_AddLink extends Zend_Form {
             'label' => 'Descriere: (max 1000 caractere)',
             'rows' => '6'
         ));
-//        $element->addDecorator($decorator);
+        $element->addDecorator($decorator);
         $element->setAttrib('class', $inputClass);
         $element->setRequired(true);
         $element->addFilters(array('StringTrim', 'StripTags'));  
@@ -144,7 +142,7 @@ class Default_Form_AddLink extends Zend_Form {
             'label' => 'Cuvinte cheie: (separate prin virgula)',
             'rows' => '2'
         ));
-//        $element->addDecorator($decorator);
+        $element->addDecorator($decorator);
         $element->setAttrib('class', $inputClass);
         $element->addFilters(array('StringTrim', 'StripTags'));  
         $element->addErrorMessage('Scrie cuvintele cheie');
@@ -154,6 +152,7 @@ class Default_Form_AddLink extends Zend_Form {
             'value' => '0',
             'id' => 'linkType'
         ));
+        $element->addDecorator($decorator);
         $element->addFilters(array('StringTrim', 'StripTags'));
         $this->addElement($element);
         
@@ -163,6 +162,8 @@ class Default_Form_AddLink extends Zend_Form {
             'placeholder' => 'Scrie codul din imaginea alaturata aici',
             'id' => 'linkType'
         ));
+        
+       
         $element->addDecorator('label', array('escape' => false) );
         $element->setRequired(true);
         $element->addFilters(array('StringTrim', 'StripTags'));  
@@ -177,7 +178,10 @@ class Default_Form_AddLink extends Zend_Form {
             'label' => 'Sunt de acord cu Termeni si Conditii'
             
         ));
-        
+        $element->setCheckedValue(1);
+        $element->setUncheckedValue(0);
+        $element->addDecorator($decorator);
+        $element->addValidator(new Zend_Validate_InArray(array(1)), true);
         $element->setRequired(true); 
         $element->addErrorMessage('bifeaza-ma');
         $this->addElement($element);
