@@ -69,7 +69,7 @@ class Admin_Model_Components_Links
                     
         }
         
-        echo $select; exit;
+       
             
         $listThem = $dbTableLinks->fetchAll($select);
         
