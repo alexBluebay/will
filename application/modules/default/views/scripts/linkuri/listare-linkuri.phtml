@@ -9,7 +9,7 @@
    <?php $i=1; foreach ($this->linkuri as $listare) : ?>
     <div class="listare_linkuri ">
         <ul style=" clear: both;">
-            <li><img src="<?php echo $this->FileExist($listare['id']); ?>" width="100" height="75" style="valign:top;float:left; padding:0px 5px 10px;"/>
+            <li><img src="<?php echo $this->baseUrl($this->FileExist($listare['id'])); ?>" width="100" height="75" style="valign:top;float:left; padding:0px 5px 10px;"/>
                 <span class="titluLink">
 				
 				<?php echo htmlspecialchars($listare['title']) ;?><?php if ($listare->type == 'exchange'){

@@ -2,9 +2,9 @@
     <h1 class="head1">Ultimele adaugate in director web</h1>
     <div>
         <?php $i = 1; foreach ($this->lastLinks as $l): ?>
-        <div class="listare_linkuri">
-        <ul style="clear:both;">
-            <li><img src="<?php echo $this->FileExist($listare['id']); ?>" width="100" height="75" style="valign:top;float:left; padding:0px 5px 10px;"/>
+        <div class="listare_linkuri clear">
+        <ul>
+            <li><img src="<?php echo $this->FileExist($l['id']); ?>" width="100" height="75" style="valign:top;float:left; padding:0px 5px 10px;"/>
                 <span class="titluLink"><?php echo htmlspecialchars($l['title']) ;?></span></br>
                 <a class="url" href="<?php echo htmlspecialchars($l->url); ?>" target="_blank">
                     <?php echo htmlspecialchars($l['url']); ?>
@@ -33,7 +33,7 @@
     
     <div>
         <?php foreach ($this->promoLinks as $p): ?> 
-        <div class="listare_linkuri" style="clear:both;">
+        <div class="listare_linkuri clear">
 		<img src="<?php echo $this->FileExist($listare['id']); ?>" width="100" height="75" style="valign:top;float:left; padding:0px 5px 10px;"/>
             <span class="titluLink"><?php echo htmlspecialchars($p->title).'<img src="/default/img/sponsor.jpg" width="39px" height="12px">'.'</br>'; ?></span>
 

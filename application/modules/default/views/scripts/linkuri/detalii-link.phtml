@@ -1,5 +1,5 @@
 <div class="content">
-<img src="<?php echo $this->FileExist($This->link->id); ?>" width="100" height="75" style="valign:top;float:left; padding:0px 5px 5px;"/>
+<img src="<?php echo $this->baseUrl($this->FileExist($this->link->id)); ?>" width="100" height="75" style="valign:top;float:left; padding:0px 5px 5px;"/>
     <div class="head1"><?php echo htmlspecialchars($this->link->title); ?></div>
     <div class="titluLink"><?php echo htmlspecialchars($this->link->title); ?></div>
     <div>
@@ -15,7 +15,7 @@
         <div style="font-weight: bold; font-size: 1.2em;">Alte linkuri din aceeasi categorie :</div>
     
     <?php foreach ($this->linkuri as $listare): ?>
-        <div class="linkuriplus" style="clear:both"><img src="<?php echo $this->FileExist($listare->id); ?>" width="100" height="75" style="valign:top;float:left; padding:0px 5px 10px;"/>
+        <div class="linkuriplus" style="clear:both"><img src="<?php echo $this->baseUrl($this->FileExist($listare->id)); ?>" width="100" height="75" style="valign:top;float:left; padding:0px 5px 10px;"/>
             <a id="titlualtelinkuri"href="<?php echo $this->url(array(
                     'title' => $this->FormatUrl($listare->title),
                     'linkId' => $listare->id,        

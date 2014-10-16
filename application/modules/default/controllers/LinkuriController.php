@@ -62,6 +62,8 @@ class LinkuriController extends Zend_Controller_Action
         
         $linkModel = new Default_Model_Components_Linkuri();
         $link = $linkModel->getDetaliuLink($linkId);
+
+        
         $subcategorieId = $link->categoryId;
         $linkuri =$linkModel->getExtraLinkuri($subcategorieId, $linkId);
         
@@ -80,6 +82,10 @@ class LinkuriController extends Zend_Controller_Action
                 
                 $lastLink = $linkModel->insertLink($form->getValues());
                 
+            $this->_redirect($this->view->url(array(
+                    'linkId' => $lastLink,
+                    'title' => 'temp'
+                ), 'detalii_link'));
             }
             
         

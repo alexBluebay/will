@@ -1,4 +1,4 @@
-<div class="content">
+<div class="content"><img src="<?php echo $this->baseUrl($this->FileExist($this->info->id)); ?>" width="100" height="75" style="valign:top;float:left; padding:0px 5px 10px;"/>
     <div class="head1"><?php echo htmlspecialchars($this->info->title); ?></div>
     <div class="titluLink"><?php echo htmlspecialchars($this->info->title); ?></div>
     <div>
@@ -14,7 +14,8 @@
         <div style="font-weight: bold; font-size: 1.2em;">Alte linkuri din aceeasi categorie :</div>
 
         <?php foreach ($this->sponsor as $s): ?>
-                <div class="linkuriplus">
+                <div class="linkuriplus clear">
+                    <img src="<?php echo $this->baseUrl($this->FileExist($s->id)); ?>" width="100" height="75" style="valign:top;float:left; padding:0px 5px 10px;"/>
                     <a id="titlualtelinkuri" href="<?php echo $this->url(array(
                             'title' => $this->FormatUrl($s->title),
                             'id' => $s->id,        

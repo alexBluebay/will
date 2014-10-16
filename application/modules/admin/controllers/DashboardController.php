@@ -79,7 +79,7 @@ class Admin_DashboardController extends Zend_Controller_Action
     public function allLinksAction()
     {
         $linksModel = new Admin_Model_Components_Links();
-        
+        $searchForm = new Admin_Form_SearchForm();
         $nrLinks = $linksModel->countListAllLinks();
         
         $maxPePag = 16;
@@ -93,11 +93,13 @@ class Admin_DashboardController extends Zend_Controller_Action
         $this->view->nrPagini = $nrPagini;
         $this->view->maxPePag = $maxPePag;
         $this->view->totalLinks = $nrLinks;
-        
+        $this->view->form = $searchForm;
+          
         $linkList = $linksModel->listAllLinks(array(
             'offsetStart' => $offsetStart,
             'maxPePag' => $maxPePag
-        ));
+        ), $this->_request->getParams());
+        
         $this->view->listObj = $linkList;
     }
     

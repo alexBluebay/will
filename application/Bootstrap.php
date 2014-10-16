@@ -4,10 +4,15 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 {
     public function _initSession()
     {
-        new Zend_Session_Namespace();
-        
+        new Zend_Session_Namespace();             
     }
-
+    
+    public function _initLocalTime(){
+        setlocale(LC_TIME, 'ro_RO', 'rom_rom');
+    }
+    
+	
+	
     public function _initSetDbAdapter()
     {
         $config = new Zend_Config(

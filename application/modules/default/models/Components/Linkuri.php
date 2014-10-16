@@ -9,7 +9,7 @@ class Default_Model_Components_Linkuri {
         $select = $dbTableLinkuri->select()
                 ->from(array( '1' => 'links' ), array('id', 'categoryId', 'url', 'title', 'email', 'shortDescription', 'status', 'type'))
                 ->where("status = ?", 'Y')
-                ->order(array( 'type DESC', 'id DESC' ))
+                ->order(array( 'createdAt DESC' ))
                 ->limit('4');
                 
         $results = $dbTableLinkuri->fetchAll($select);
@@ -107,7 +107,12 @@ class Default_Model_Components_Linkuri {
                 
     }
     
-    
+    /**
+     * 
+     * @param int $linkId
+     * @return array - detaliu link
+     * @throws Exception
+     */
     public function getDetaliuLink($linkId)
     {
         
@@ -122,14 +127,22 @@ class Default_Model_Components_Linkuri {
                 ->join(array('c' => 'categories'), 'l.categoryId = c.id', array('category as subcategory'))
                 ->join(array('c2' => 'categories'), 'c.parentId = c2.id', array('category as category'))
                 
-                ->where('status = ?', 'Y')
                 ->where('l.id = ?', $linkId);
         
+        if (!isset($_SESSION['tempId']) || ($_SESSION['tempId'] != $linkId)) {
+            $select->where('status = ?', 'Y');
+            
+        }
+      
         // ai un join cu tabela de categorii ca sa aflii si denumirea categoriei
         
         // la final nu uita sa faci fetchRow ca sa iei un singur rezultat
         
         $result = $dbTableDetaliuLink->fetchRow($select);
+       
+        if( !count($result) ) {
+            throw new Exception('Nu exista link.');
+        }
         
         return $result;
     }
@@ -163,6 +176,7 @@ class Default_Model_Components_Linkuri {
                         
         $insertId = $dbTableLinkuri->insert($insert);
         
+        $_SESSION['tempId'] = $insertId;
         
         
         

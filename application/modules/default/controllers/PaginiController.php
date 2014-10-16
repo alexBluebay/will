@@ -11,7 +11,7 @@ class PaginiController extends Zend_Controller_Action
     public function avantajeAction()
     {
         $avantajeModel = new Default_Model_Components_Pagini();
-        $avantaje = $avantajeModel->getPagini();
+        $avantaje = $avantajeModel->getPagini('avantaje');
         
         $this->view->pagini = $avantaje;
     }
@@ -19,7 +19,7 @@ class PaginiController extends Zend_Controller_Action
     public function contactAction()
     {
         $contactModel = new Default_Model_Components_Pagini();
-        $contact = $contactModel->getPagini();
+        $contact = $contactModel->getPagini('contact');
         $form = new Default_Form_ContactForm();
         
         
@@ -57,7 +57,7 @@ class PaginiController extends Zend_Controller_Action
     public function serviciiAction()
     {
         $serviciiModel = new Default_Model_Components_Pagini();
-        $servicii = $serviciiModel->getPagini();
+        $servicii = $serviciiModel->getPagini('servicii');
         
         $this->view->pagini = $servicii;
     }
@@ -65,7 +65,7 @@ class PaginiController extends Zend_Controller_Action
     public function termeniAction()
     {
         $termeniModel = new Default_Model_Components_Pagini();
-        $termeni = $termeniModel->getPagini();
+        $termeni = $termeniModel->getPagini('termeni');
         
         $this->view->pagini = $termeni;
     }

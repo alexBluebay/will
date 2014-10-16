@@ -19,18 +19,58 @@ class Admin_Model_Components_Links
     }
     
     
-    public function listAllLinks($paginationArr = array())   
+    public function listAllLinks($paginationArr = array(), $spec = array())   
     {
         $dbTableLinks = new Admin_Model_DbTable_Links();
         
+        $db = Zend_Db_Table::getDefaultAdapter();
+        
+                 
         $select = $dbTableLinks->select()
                 ->from(array('l' => 'links'), array('*'))
-                ->order('id DESC');
+                ->order('l.id DESC');
         
         if (isset($paginationArr['maxPePag']) && isset($paginationArr['offsetStart'])) {
             $select->limit($paginationArr['maxPePag'], $paginationArr['offsetStart']);
         }
-                
+        
+        if (isset($spec['category']) && ($spec['category'] != '')){
+            $select->where('categoryId = ?', $spec['category']);
+        }
+        
+        if (isset($spec['type']) && ($spec['type'] != '')){
+            $select->where('type = ?', $spec['type']);
+        }
+        
+        if (isset($spec['search']) && ($spec['search'] != '')){
+            $select->where('title LIKE ?', "%{$spec['search']}%");
+        }
+        
+        if (isset($spec['keys']) && ($spec['keys'] != '')){
+            $select->setIntegrityCheck(false) 
+            ->group(array('l.id'))
+            ->join(array('lk' => 'links_keywords'), 'lk.urlId = l.id')
+            ->join(array('z' => 'keywords'), 'z.id = lk.keywordId');
+            
+            $keyExplode = explode(',', $spec['keys']);
+            
+            if(count($keyExplode) == 1) {
+                $select->where('z.keyword = ?', trim($keyExplode[0]));
+            }      
+            else {
+                $syntax = '';
+                foreach ($keyExplode as $key) {
+                    $syntax .= $db->quoteInto('z.keyword=?', $key) . ' OR ';
+                }           
+                $syntax = rtrim($syntax, 'OR ');   
+                                
+                $select->where($syntax);
+            }
+                    
+        }
+        
+        echo $select; exit;
+            
         $listThem = $dbTableLinks->fetchAll($select);
         
         return $listThem;
@@ -106,6 +146,14 @@ class Admin_Model_Components_Links
         
     }
     
+    public function linkTypeStructure(){
+        
+        $dbTableLinks = new Admin_Model_DbTable_Links();
+        
+        return $dbTableLinks->getEnumValuesType();
+    }
+
+
     public function infoLinks($linkId)   
     {
         
