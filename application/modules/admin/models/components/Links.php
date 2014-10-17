@@ -27,7 +27,7 @@ class Admin_Model_Components_Links
         
                  
         $select = $dbTableLinks->select()
-                ->from(array('l' => 'links'), array('*'))
+                ->from(array('l' => 'links'), array('id as linkId', 'categoryId', 'url', 'title', 'email', 'shortDescription', 'picture', 'createdAt', 'status', 'type', 'ip'))
                 ->order('l.id DESC');
         
         if (isset($paginationArr['maxPePag']) && isset($paginationArr['offsetStart'])) {
@@ -196,10 +196,19 @@ class Admin_Model_Components_Links
     
     public function delLink($id){
         $dbTableLinks = new Admin_Model_DbTable_Links();
+        
+        $select = $dbTableLinks->select()
+                ->from(array('l' => 'links'), array('picture')) // vezi db si ia id titlu, url si link
+                ->where('id = ?', $id);
+        $queryRes = $dbTableLinks->fetchRow($select);
 
         $res = $dbTableLinks->delete(array(
             'id = ?' => $id
         ));
+        
+        if (file_exists('default/img/uploads/'.$queryRes->picture)) {
+            unlink('default/img/uploads/'.$queryRes->picture);
+        }
         
         return $res;
     }

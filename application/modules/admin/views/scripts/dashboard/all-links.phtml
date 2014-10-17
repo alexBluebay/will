@@ -27,9 +27,9 @@
               <div class="list-group">
                 <?php foreach ($this->listObj as $links) : ?>
                   <li class="list-group-item">                   
-                      <img src="<?php echo $this->baseUrl($this->FileExist($links->id)); ?>" width="100" height="75" style="valign:top;float:left; padding:0px 5px 10px;"/>
+                      <img src="<?php echo $this->baseUrl($this->FileExist($links->picture)); ?>" width="100" height="75" style="valign:top;float:left; padding:0px 5px 10px;"/>
                     <h4 class="list-group-item-heading">
-                        <a href="<?php echo $this->url(array('linkId' => $links->id), 'viewLink'); ?>">
+                        <a href="<?php echo $this->url(array('linkId' => $links->linkId), 'viewLink'); ?>">
                             <?php echo htmlspecialchars($links->title); ?>
                         </a>
                         <span class="label label-info pull-right">
@@ -38,8 +38,8 @@
                     <p class="list-group-item-text">
                         <small><?php echo htmlspecialchars($links->url); ?> &nbsp; 
                         </small>
-                        <a href="<?php echo $this->url(array('linkId' => $links->id), 'editLink'); ?>"><i class="glyphicon glyphicon-pencil text-info"></i></a> &nbsp; 
-                        <a href="<?php echo $this->url(array('linkId' => $links->id), 'delLink'); ?>" onclick="return( confirm('Esti sigur ca vrei sa stergi acest link?'))">
+                        <a href="<?php echo $this->url(array('linkId' => $links->linkId), 'editLink'); ?>"><i class="glyphicon glyphicon-pencil text-info"></i></a> &nbsp; 
+                        <a href="<?php echo $this->url(array('linkId' => $links->linkId), 'delLink'); ?>" onclick="return( confirm('Esti sigur ca vrei sa stergi acest link?'))">
                             <i class="glyphicon glyphicon glyphicon-remove text-danger"></i></a> &nbsp; 
                         <span class="text-muted" data-toggle="tooltip" data-placement="right" data-original-title="<?php echo ' e-Mail:'.htmlspecialchars($links->email).' IP:'.$links->ip; ?>">
                             <i class="glyphicon glyphicon-info-sign"></i>  &nbsp; 

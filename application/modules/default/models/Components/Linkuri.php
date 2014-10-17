@@ -7,7 +7,7 @@ class Default_Model_Components_Linkuri {
         $dbTableLinkuri = new Default_Model_DbTable_Linkuri();
                 
         $select = $dbTableLinkuri->select()
-                ->from(array( '1' => 'links' ), array('id', 'categoryId', 'url', 'title', 'email', 'shortDescription', 'status', 'type'))
+                ->from(array( '1' => 'links' ), array('id', 'categoryId', 'url', 'title', 'email', 'shortDescription', 'picture', 'status', 'type'))
                 ->where("status = ?", 'Y')
                 ->order(array( 'createdAt DESC' ))
                 ->limit('4');
@@ -53,7 +53,7 @@ class Default_Model_Components_Linkuri {
         $dbTableLinkuri = new Default_Model_DbTable_Linkuri();
                 
         $select = $dbTableLinkuri->select()
-                ->from(array( '1' => 'links' ), array('id', 'categoryId', 'url', 'title', 'email', 'shortDescription', 'longDescription', 'status', 'type'))
+                ->from(array( '1' => 'links' ), array('id', 'categoryId', 'url', 'title', 'email', 'shortDescription', 'longDescription', 'picture', 'status', 'type'))
                 ->where("status = ?", 'Y')
                 ->where("categoryId = ?", $subcategorieId)
                 
@@ -95,7 +95,7 @@ class Default_Model_Components_Linkuri {
         $dbTableLinkuri = new Default_Model_DbTable_Linkuri();
                 
         $select = $dbTableLinkuri->select()
-                ->from(array( '1' => 'links' ), array('id', 'categoryId', 'url', 'title', 'email', 'shortDescription', 'longDescription', 'status', 'type'))
+                ->from(array( '1' => 'links' ), array('id', 'categoryId', 'url', 'title', 'email', 'shortDescription', 'longDescription', 'picture', 'status', 'type'))
                 ->where("status = ?", 'Y')
                 ->where("categoryId = ?", $subcategorieId)
                 ->where("id != ?", $linkId)
@@ -121,7 +121,7 @@ class Default_Model_Components_Linkuri {
         $dbTableDetaliuLink = new Default_Model_DbTable_Linkuri();
         
         $select = $dbTableDetaliuLink->select()
-                ->from(array('l' => 'links'), array('id', 'categoryId', 'url', 'title', 'shortDescription', 'longDescription', 'status', 'type'))
+                ->from(array('l' => 'links'), array('id', 'categoryId', 'url', 'title', 'shortDescription', 'longDescription', 'picture', 'status', 'type'))
                 ->setIntegrityCheck(false)
                 
                 ->join(array('c' => 'categories'), 'l.categoryId = c.id', array('category as subcategory'))
@@ -261,6 +261,20 @@ class Default_Model_Components_Linkuri {
                               
         return $results;
                 
+    }
+    
+    public function updatePicture($id){
+        if (isset($id) && $id != ''){
+            $dbTableLinks = new Default_Model_DbTable_Linkuri();
+            $updLink = $dbTableLinks->update(array(
+                'picture' => $id.'.jpg'
+            ), array(
+                "id = ?" => $id
+            ));
+                   
+
+            return $updLink;
+        }
     }
     
     public function checkLinkExchange($url = ''){

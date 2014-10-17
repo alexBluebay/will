@@ -12,7 +12,7 @@
               <div class="list-group">
                 <?php foreach ($this->listObj as $links) : ?>
                   <li class="list-group-item">
-<img src="<?php echo $this->baseUrl($this->FileExist($links->id)); ?>" width="100" height="75" style="valign:top;float:left; padding:0px 5px 10px;"/>
+<img src="<?php echo $this->baseUrl($this->FileExist($links->picture)); ?>" width="100" height="75" style="valign:top;float:left; padding:0px 5px 10px;"/>
                     <h4 class="list-group-item-heading">
                         <a href="<?php echo $this->url(array('linkId' => $links->id), 'viewLink'); ?>">
                             <?php echo $links->title; ?>

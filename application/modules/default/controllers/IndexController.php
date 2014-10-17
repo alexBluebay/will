@@ -26,6 +26,8 @@ class IndexController extends Zend_Controller_Action
         $this->_helper->layout->disableLayout();
         $this->_helper->viewRenderer->setNoRender(true);
         
+        $linkModel = new Default_Model_Components_Linkuri();
+        
         $message = $_GET['message'];
         $customId = $_GET['customid'];
         $id = $_GET['id'];
@@ -47,6 +49,7 @@ class IndexController extends Zend_Controller_Action
         //Ensure that the application has the correct rights for this directory.
         file_put_contents($uploadPath . $customId.'.jpg', $result);
         
+        $updateResult = $linkModel->updatePicture($customId);
         
     }
 

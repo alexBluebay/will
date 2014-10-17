@@ -3,9 +3,9 @@ class Zend_View_Helper_FileExist extends Zend_View_Helper_Abstract
 {
     function FileExist($filename, $filepath = 'default/img/uploads/') {
        
-		if (file_exists($filepath.$filename.'.jpg')) {
+		if (file_exists($filepath.$filename)) {
 		
-			return $filepath.$filename.'.jpg';
+			return $filepath.$filename;
 			
 		} else {
 		
