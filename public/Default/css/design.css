@@ -66,9 +66,12 @@ body {
 }
 #navMenu a:hover{
     text-decoration: underline;
-    color: #000000;
-    font-size: 101%;
+    color: #003366;
+    font-size: 104%;
+    background-color: #F9F9F9;
+    border-radius: 0.5em;
 }
+
 #search {
     float:right;
 }
