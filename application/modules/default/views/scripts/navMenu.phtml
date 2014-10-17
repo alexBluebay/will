@@ -1,9 +1,18 @@
+<?php
+    $params = $this->GetParams();
+?>
+
+
 <div id="navMenu">
     <ul>
         <li>
-            <a href="<?php echo $this->baseUrl('/'); ?>" >Home</a>
-            <a href="<?php echo $this->baseUrl('/categorii'); ?>" >Categorii</a>
-            <a href="<?php echo $this->baseUrl('/adauga'); ?>" >Adauga link</a>
+            &nbsp;
+            <a href="<?php echo $this->baseUrl('/'); ?>" 
+               class="<?php if($params['controllerName'] == 'index' && $params['actionName'] == 'index') echo 'active'; ?>">Home</a>
+            <a href="<?php echo $this->baseUrl('/categorii'); ?>"
+               class="<?php if($params['controllerName'] == 'categorii') echo 'active'; ?>">Categorii</a>
+            <a href="<?php echo $this->baseUrl('/adauga'); ?>"
+               class="<?php if($params['controllerName'] == 'linkuri') echo 'active'; ?>">Adauga link</a>
             <div id="search">
                 <form action="http://www.google.ro/cse" id="cse-search-box" target="_blank">
 
