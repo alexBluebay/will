@@ -1,9 +1,35 @@
+<?php
+    $params = $this->GetParams();
+    $data = $this->GetParams();
+
+?>
 <div><?php echo $this->GetAds('nav_left')->adv_code ; ?>
     <ul>
         <li>
-            <a href="<?php echo $this->baseUrl('/termeni'); ?>" >Termeni si conditii</a>
-            <a href="<?php echo $this->baseUrl('/servicii'); ?>" >Servicii Will</a>
-            <a href="<?php echo $this->baseUrl('/avantaje'); ?>" >Avantaje Director Web</a>
-            <a href="<?php echo $this->baseUrl('/contact'); ?>" >Contact</a>
+            <a href="<?php echo $this->url(array(
+                'controller' => 'pagini',
+                'action' => 'termeni'
+            ), 'termeni'); ?>"
+            class="<?php if($params['controllerName'] == 'pagini' && $data['actionName'] == 'termeni') echo 'actived'; ?>" >
+                Termeni si conditii</a>
+            <a href="<?php echo $this->url(array(
+                'controller' => 'pagini',
+                'action' => 'servicii'
+            ), 'servicii'); ?>"
+            class="<?php if($params['controllerName'] == 'pagini' && $data['actionName'] == 'servicii') echo 'actived'; ?>" >
+                Servicii Will</a>
+            <a href="<?php echo $this->url(array(
+                'controller' => 'pagini',
+                'action' => 'avantaje'
+            ), 'avantaje'); ?>"
+            class="<?php if($params['controllerName'] == 'pagini' && $data['actionName'] == 'avantaje') echo 'actived'; ?>" >
+                Avantaje Director Web</a>
+            <a href="<?php echo $this->url(array(
+                'controller' => 'pagini',
+                'action' => 'contact'
+            ), 'contact'); ?>" 
+            class="<?php if($params['controllerName'] == 'pagini' && $data['actionName'] == 'contact') echo 'actived'; ?>" >
+                Contact</a>
+            &nbsp;
     </ul>
 </div>

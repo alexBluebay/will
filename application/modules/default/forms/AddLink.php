@@ -33,7 +33,7 @@ class Default_Form_AddLink extends Zend_Form {
         $urlUnique->setMessage('Url-ul a mai fost definit in director.');
         
         $notEmpty = new Zend_Validate_NotEmpty();
-        $notEmpty->setMessage('Specificati link.');
+        $notEmpty->setMessage('Trebuie introdus un URL valid');
         
         
         $isEqual = new Zend_Validate_Identical();
@@ -91,7 +91,7 @@ class Default_Form_AddLink extends Zend_Form {
         ));
         $element->addDecorator($decorator);
         $element->setAttrib('class', $inputClass);
-        $element->addErrorMessage('Scrie titlul ');
+        $element->addErrorMessage('');
         $element->setRequired(true);
         $element->addFilters(array('StringTrim', 'StripTags'));  
         $this->addElement($element);
@@ -99,14 +99,14 @@ class Default_Form_AddLink extends Zend_Form {
                                 //  Email
 
         $element = new Zend_Form_Element_Text('email', array(
-            'label' => 'eMail:'
+            'label' => 'e-Mail:'
         ));
         $element->addValidator($emailAddress);
         $element->addFilters(array('StringTrim'));
         $element->addDecorator($decorator);
         $element->setAttrib('class', $inputClass);
         $element->setRequired(true);
-        $element->addErrorMessage('Trebuie sa introduci o adresa de email valida');
+        $element->addErrorMessage('Trebuie introdusa o adresa de e-Mail valida');
         $this->addElement($element);
         
                                 // Descriere scurta
@@ -119,7 +119,7 @@ class Default_Form_AddLink extends Zend_Form {
         $element->addDecorator($decorator);
         $element->setAttrib('class', $inputClass);
         $element->setRequired(true);        
-        $element->addErrorMessage('Scrie o descriere scurta');
+        $element->addErrorMessage('');
         $element->addFilters(array('StringTrim', 'StripTags'));        
         $this->addElement($element);
         
@@ -133,7 +133,7 @@ class Default_Form_AddLink extends Zend_Form {
         $element->setAttrib('class', $inputClass);
         $element->setRequired(true);
         $element->addFilters(array('StringTrim', 'StripTags'));  
-        $element->addErrorMessage('Descrie site-ul tau');
+        $element->addErrorMessage('');
         $this->addElement($element);
                                         
                                 // keywords
@@ -145,7 +145,7 @@ class Default_Form_AddLink extends Zend_Form {
         $element->addDecorator($decorator);
         $element->setAttrib('class', $inputClass);
         $element->addFilters(array('StringTrim', 'StripTags'));  
-        $element->addErrorMessage('Scrie cuvintele cheie');
+        $element->addErrorMessage('');
         $this->addElement($element);
         
         $element = new Zend_Form_Element_Hidden('linkType', array(
@@ -175,7 +175,7 @@ class Default_Form_AddLink extends Zend_Form {
         $this->addElement($element);
         //
         $element = new Zend_Form_Element_Checkbox('agree', array(
-            'label' => 'Sunt de acord cu Termeni si Conditii'
+            'label' => 'Sunt de acord cu Termeni si Conditii',
             
         ));
         $element->setCheckedValue(1);
@@ -183,7 +183,7 @@ class Default_Form_AddLink extends Zend_Form {
         $element->addDecorator($decorator);
         $element->addValidator(new Zend_Validate_InArray(array(1)), true);
         $element->setRequired(true); 
-        $element->addErrorMessage('bifeaza-ma');
+        $element->addErrorMessage('Trebuie sa fii de acord cu termenii si conditiile Will');
         $this->addElement($element);
                                 // Buton Submit
 

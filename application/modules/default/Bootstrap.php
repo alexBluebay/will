@@ -9,6 +9,13 @@ class Default_Bootstrap extends Zend_Application_Module_Bootstrap
     {        
         $router = Zend_Controller_Front::getInstance()->getRouter();
         
+        $route = new Zend_Controller_Router_Route('',
+            array(
+                'controller' => 'index',
+                'action' => 'index',
+            ));
+
+        $router->addRoute('home', $route);
                                // Categorii nav
         
         $route = new Zend_Controller_Router_Route('categorii/',
