@@ -263,6 +263,32 @@ class Default_Model_Components_Linkuri {
                 
     }
     
+    public function checkLinkExchange($url = ''){
+        $backLinkArr = array(
+            '<a href="http://www.will.ro" title="Director web Will.ro" target="_blank">will.ro - director online</a>',
+            '<a href="http://www.will.ro" title="Director web Will.ro" target="_blank"><img src="http://www.will.ro/logo.jpg" alt="Director web Will.ro" border="0"></a>'
+        );
+        
+        if (strpos($url, 'http://') === false) {
+            $url = 'http://'.$url;
+            
+        }
+        
+        $ctx = stream_context_create(array('http'=>
+            array(
+                'timeout' => 1200, // 1 200 Seconds = 20 Minutes
+            )
+        ));
+        
+        $page = file_get_contents($url, false, $ctx);
+        
+        foreach ($backLinkArr as $as){
+            if(strpos($page, $as) !== FALSE){
+                return true;
+            }
+        }
+        return false;
+    }
    
 }
     

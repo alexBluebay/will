@@ -80,13 +80,24 @@ class LinkuriController extends Zend_Controller_Action
             if($form->isValid($this->_request->getParams())) {
                 $linkModel = new Default_Model_Components_Linkuri();
                 
-                $lastLink = $linkModel->insertLink($form->getValues());
+                $formValues = $form->getValues();
                 
-            $this->_redirect($this->view->url(array(
-                    'linkId' => $lastLink,
-                    'title' => 'temp'
-                ), 'detalii_link'));
-            }
+                if ($formValues['linkType'] == '1') {
+                    $isBackLink = $linkModel->checkLinkExchange($formValues['url']);
+                } else {
+                    $isBackLink = false;
+                }
+                
+                if ($isBackLink === TRUE){
+                    
+                    $lastLink = $linkModel->insertLink($formValues);
+
+                    $this->_redirect($this->view->url(array(
+                            'linkId' => $lastLink,
+                            'title' => 'temp'
+                        ), 'detalii_link'));
+                    }
+                }
             
         
         }
