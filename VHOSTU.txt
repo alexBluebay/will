@@ -1,0 +1,11 @@
+<VirtualHost *:80>
+    ServerName will.local
+    DocumentRoot "D:/Eduard/Proiecte/will/public"
+    SetEnv APPLICATION_ENV "development"
+    <Directory "D:/Eduard/Proiecte/will/public">
+        DirectoryIndex index.php
+        AllowOverride All
+        Order allow,deny
+        Allow from all
+    </Directory>
+</VirtualHost>
