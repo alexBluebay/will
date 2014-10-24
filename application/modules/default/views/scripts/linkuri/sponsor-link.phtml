@@ -1,4 +1,4 @@
-<div class="content"><img src="<?php echo $this->baseUrl($this->FileExist($this->info->picture)); ?>" width="100" height="75" style="valign:top;float:left; padding:0px 5px 10px;"/>
+<div class="content"><img src="<?php echo $this->baseUrl($this->FileExist('promo-'.$this->info->id.'.jpg')); ?>" width="100" height="75" style="valign:top;float:left; padding:0px 5px 10px;"/>
     <div class="head1"><?php echo htmlspecialchars($this->info->title); ?></div>
     <div class="titluLink"><?php echo htmlspecialchars($this->info->title); ?></div>
     <div>
@@ -15,7 +15,7 @@
 
         <?php foreach ($this->sponsor as $s): ?>
                 <div class="linkuriplus clear">
-                    <img src="<?php echo $this->baseUrl($this->FileExist($s->picture)); ?>" width="100" height="75" style="valign:top;float:left; padding:0px 5px 10px;"/>
+                    <img src="<?php echo $this->baseUrl($this->FileExist('promo-'.$s->id.'.jpg')); ?>" width="100" height="75" style="valign:top;float:left; padding:0px 5px 10px;"/>
                     <a id="titlualtelinkuri" href="<?php echo $this->url(array(
                             'title' => $this->FormatUrl($s->title),
                             'id' => $s->id,        

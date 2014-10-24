@@ -206,10 +206,52 @@ class Admin_Model_Components_Links
             'id = ?' => $id
         ));
         
-        if (file_exists('default/img/uploads/'.$queryRes->picture)) {
-            unlink('default/img/uploads/'.$queryRes->picture);
+        if (file_exists('default/img/uploads/'.$queryRes->picture.'.jpg')) {
+            unlink('default/img/uploads/'.$queryRes->picture.'.jpg');
         }
         
         return $res;
+    }
+    
+    public function updatePicture($id){
+        $dbTableLinks = new Admin_Model_DbTable_Links();
+        
+        
+        $select = $dbTableLinks->select()
+                ->from(array('l' => 'links'), array('picture', 'url')) // vezi db si ia id titlu, url si link
+                ->where('id = ?', $id);
+        $queryRes = $dbTableLinks->fetchRow($select);
+        
+        $oldImg = $queryRes->picture;
+        
+        $updLink = $dbTableLinks->update(array(
+            'picture' => 'default.jpg'
+        ), "id = '$id'");
+        
+        
+        try {
+        
+            require APPLICATION_PATH . '/../library/GrabzPicture/lib/GrabzItClient.class.php';
+
+            $grabzIt = new GrabzItClient("ZWQ2MTdkNTEzOWFlNDlhNTllMTk2MDdiY2Q0MGZkMmI=", 
+                                         "Pz8/Kz96Pz8/PzU/P3s/NDU/P0MdPz8AV1U/Pz8/Pz8=");
+
+            $grabzIt->TakePicture($queryRes->url, 
+                            $_SERVER['HTTP_HOST'].'/index/grabz-it', 
+                            $id, 
+                            null, 
+                            null, 
+                            '100', 
+                            '75',
+                            'jpg'
+                            );
+        }
+	catch (Exception $e) {
+            //echo '';
+	}
+        
+        if ($pic != ''){
+           @unlink('default/img/uploads/'.$oldImg.'.jpg');
+        }
     }
 }

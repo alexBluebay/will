@@ -4,7 +4,7 @@
         <?php $i = 1; foreach ($this->lastLinks as $l): ?>
         <div class="listare_linkuri clear">
         <ul>
-            <li><img src="<?php echo $this->FileExist($l['id']); ?>" width="100" height="75" style="valign:top;float:left; padding:0px 5px 10px;"/>
+            <li><img src="<?php echo $this->FileExist($l['picture']); ?>" width="100" height="75" style="valign:top;float:left; padding:0px 5px 10px;"/>
                 <span class="titluLink"><?php echo htmlspecialchars($l['title']) ;?></span></br>
                 <a class="url" href="<?php echo htmlspecialchars($l->url); ?>" target="_blank">
                     <?php echo htmlspecialchars($l['url']); ?>
@@ -34,7 +34,7 @@
     <div>
         <?php foreach ($this->promoLinks as $p): ?> 
         <div class="listare_linkuri clear">
-		<img src="<?php echo $this->FileExist($listare['id']); ?>" width="100" height="75" style="valign:top;float:left; padding:0px 5px 10px;"/>
+		<img src="<?php echo $this->FileExist('promo-'.$p->id.'.jpg'); ?>" width="100" height="75" style="valign:top;float:left; padding:0px 5px 10px;"/>
             <span class="titluLink"><?php echo htmlspecialchars($p->title).'<img src="/default/img/sponsor.jpg" width="39px" height="12px">'.'</br>'; ?></span>
 
             <a class="url" href="<?php echo htmlspecialchars($p->url); ?>" target="_blank">

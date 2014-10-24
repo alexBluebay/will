@@ -108,6 +108,29 @@ class Admin_ModulesController extends Zend_Controller_Action
         $meteoArr = $modModel->cronMeteoModel();
         
     }
+    
+    public function upImgsAction(){
+        $this->_helper->layout->disableLayout();
+        $this->_helper->viewRenderer->setNoRender(true);
+        
+        ini_set('memory_limit', '1G');
+        set_time_limit('0');
+        
+        $unModel = new Admin_Model_Components_Links();
+        
+        $iaTot = $unModel->iaToateLinkurile();
+        
+        foreach ($iaTot as $k){
+            
+            if (getimagesize('default/img/uploads/'.$k->picture) === false) {
+                
+                @unlink('default/img/uploads/'.$k->picture);
+                $unModel->iaToateLinkurileUpdate($k->id);
+                
+            }
+            
+        }
+    }
 
 }
 

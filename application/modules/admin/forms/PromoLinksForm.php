@@ -9,11 +9,11 @@ class Admin_Form_PromoLinksForm extends Zend_Form {
         $inputClass = 'form-control';
         $this->setMethod('post');
         $this->setAction('');
-        $this->setAttribs(array(
-            'class' => 'form-horizontal',
-            'role' => 'form'
-        ));
-                
+        
+        $this->setAttrib('class', 'form-horizontal');
+        $this->setAttrib('role', 'form');
+
+                      
         $decorator = new Admin_Form_Decorators_DefaultDecorator();
         $PromoLinksModel = new Admin_Model_Components_PromoLinkModel();
         $PromoLinksArray = $PromoLinksModel->enumBuildSelect();
@@ -22,6 +22,7 @@ class Admin_Form_PromoLinksForm extends Zend_Form {
             'label' => 'Layout:'
         ));
         
+   
         
         
         $element->addDecorator($decorator);
@@ -65,6 +66,21 @@ class Admin_Form_PromoLinksForm extends Zend_Form {
         $element->addErrorMessage('Adauga o descriere');
         $this->addElement($element);
         
+        if ($this->getAttrib('a')){
+            
+            $element = new Zend_Form_Element_Select('updatePic', array(
+                'label' => 'Update poza:'
+            ));
+
+            $element->addDecorator($decorator);
+            $element->addMultiOptions(array(
+                'N' => 'NU',
+                'Y' => 'DA'
+                ));   
+            $element->setAttrib('class', $inputClass);
+            $this->addElement($element);
+            
+        }
         
          $element = new Zend_Form_Element_Button('sendData', array(
             'label' => 'Trimite',

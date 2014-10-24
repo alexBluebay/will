@@ -80,6 +80,16 @@ class  Admin_Bootstrap extends Zend_Application_Module_Bootstrap
                 );
         $router->addRoute('delLink', $route);
         
+        $route = new Zend_Controller_Router_Route('admin/update-picture/:linkId',
+                array(
+                    'module' => 'admin',
+                    'controller' => 'dashboard',
+                    'action' => 'update-picture',
+                    'linkId' => ''
+                    )
+                );
+        $router->addRoute('updatePicture', $route);
+        
         
         $route = new Zend_Controller_Router_Route('admin/edit-category/:id',
                 array(

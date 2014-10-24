@@ -42,7 +42,30 @@ class Admin_Model_Components_PromoLinkModel
             'desc' => $data['desc']
         ));
         
+        try {
+        
+            require APPLICATION_PATH . '/../library/GrabzPicture/lib/GrabzItClient.class.php';
+
+            $grabzIt = new GrabzItClient("ZWQ2MTdkNTEzOWFlNDlhNTllMTk2MDdiY2Q0MGZkMmI=", 
+                                         "Pz8/Kz96Pz8/PzU/P3s/NDU/P0MdPz8AV1U/Pz8/Pz8=");
+
+            $grabzIt->TakePicture($data['url'], 
+                            $_SERVER['HTTP_HOST'].'/index/grabz-it', 
+                            'promo-'.$linkId, 
+                            null, 
+                            null, 
+                            '100', 
+                            '75',
+                            'jpg'
+                            );
+           
+        }
+	catch (Exception $e) {
+            //echo '';
+	}
+        
         return $linkId;
+        
     }
     
     public function updatePromoLink($data, $idLink){
@@ -53,6 +76,36 @@ class Admin_Model_Components_PromoLinkModel
             'link_layout' => $data['layout'],
             'desc' => $data['desc']
         ), "id = '$idLink'");
+        
+        
+        
+        try {
+        
+            require APPLICATION_PATH . '/../library/GrabzPicture/lib/GrabzItClient.class.php';
+
+            $grabzIt = new GrabzItClient("ZWQ2MTdkNTEzOWFlNDlhNTllMTk2MDdiY2Q0MGZkMmI=", 
+                                         "Pz8/Kz96Pz8/PzU/P3s/NDU/P0MdPz8AV1U/Pz8/Pz8=");
+
+            $grabzIt->TakePicture($data['url'], 
+                            $_SERVER['HTTP_HOST'].'/index/grabz-it', 
+                            'promo-'.$idLink, 
+                            null, 
+                            null, 
+                            '100', 
+                            '75',
+                            'jpg'
+                            );
+           
+        }
+	catch (Exception $e) {
+            //echo '';
+	}
+        
+        if (file_exists('default/img/uploads/promo-'.$idLink.'.jpg')){
+            @unlink('default/img/uploads/promo-'.$idLink.'.jpg');
+        }
+        
+        
       
         return $idLink;
     }
@@ -63,6 +116,10 @@ class Admin_Model_Components_PromoLinkModel
         $res = $dbTablePromoLinks->delete(array(
             'id = ?' => $id
         ));
+        
+        if (file_exists('default/img/uploads/promo-'.$id.'.jpg')){
+                @unlink('default/img/uploads/promo-'.$id.'.jpg');
+        }
         
         return $res;
     }

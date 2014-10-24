@@ -41,8 +41,10 @@ class Admin_PromoLinksController extends Zend_Controller_Action
         
         $linkInfo = $promoLinksModel->editPromoLink($idLink);
         
-        $form = new Admin_Form_PromoLinksForm();
-        
+        $form = new Admin_Form_PromoLinksForm(array(
+            'a' => 'edit'
+        ));
+
         if($this->_request->isPost()) {
             
            if($form->isValid($this->_request->getParams())) {

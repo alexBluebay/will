@@ -203,24 +203,24 @@ class Default_Model_Components_Linkuri {
         
         try {
         
-			require APPLICATION_PATH . '/../library/GrabzPicture/lib/GrabzItClient.class.php';
-			
-			$grabzIt = new GrabzItClient("ZWQ2MTdkNTEzOWFlNDlhNTllMTk2MDdiY2Q0MGZkMmI=", 
-										 "Pz8/Kz96Pz8/PzU/P3s/NDU/P0MdPz8AV1U/Pz8/Pz8=");
-			
-			$grabzIt->TakePicture($postData['url'], 
-					$_SERVER['HTTP_HOST'].'/index/grabz-it', 
-					$insertId, 
-					null, 
-					null, 
-					'100', 
-					'75',
-					'jpg'
-					);
+            require APPLICATION_PATH . '/../library/GrabzPicture/lib/GrabzItClient.class.php';
+
+            $grabzIt = new GrabzItClient("ZWQ2MTdkNTEzOWFlNDlhNTllMTk2MDdiY2Q0MGZkMmI=", 
+                                                                     "Pz8/Kz96Pz8/PzU/P3s/NDU/P0MdPz8AV1U/Pz8/Pz8=");
+
+            $grabzIt->TakePicture($postData['url'], 
+                            $_SERVER['HTTP_HOST'].'/index/grabz-it', 
+                            $insertId, 
+                            null, 
+                            null, 
+                            '100', 
+                            '75',
+                            'jpg'
+                            );
         }
-		catch (Exception $e) {
-			//echo '';
-		}
+	catch (Exception $e) {
+            //echo '';
+	}
         return $insertId;
     }
     

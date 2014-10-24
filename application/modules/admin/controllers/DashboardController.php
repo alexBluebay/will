@@ -129,6 +129,26 @@ class Admin_DashboardController extends Zend_Controller_Action
         ), 'allLinks'));
 
     }
+    
+    public function updatePictureAction(){
+        $this->_helper->layout->disableLayout();
+        $this->_helper->viewRenderer->setNoRender(true);
+        
+        $linkId = $this->_request->getParam('linkId');
+        $linksModel = new Admin_Model_Components_Links();
+        $linksModel->updatePicture($linkId);
+        
+        $this->_helper->getHelper('FlashMessenger')
+                        ->setNamespace('success')
+                        ->addMessage('Cererea de update pentru imagine a fost trimisa');
+        
+        $this->_redirect($this->view->url(array(
+            'module' => 'admin',
+            'controller' => 'dashboard',
+            'action' => 'all-links'
+        ), 'allLinks'));
+        
+    }
 
 
 }
